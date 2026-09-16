@@ -246,11 +246,15 @@ body.snap-scroll-body {
 
 .couple-img {
   width: 100%;
-  max-width: clamp(340px, 46vw, 640px);
-  height: auto;
-  max-height: 68vh;
-  object-fit: contain;
-  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.95));
+  max-width: clamp(260px, 36vw, 480px);
+  height: clamp(280px, 52vh, 520px);
+  max-height: 60vh;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50% 50% 48% 48% / 40% 40% 60% 60%;
+  border: 3px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.3), 0 20px 60px rgba(0, 0, 0, 0.9);
+  filter: brightness(1.04) contrast(1.05);
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
   animation: floatSubtle 6s infinite ease-in-out;
   position: relative;
