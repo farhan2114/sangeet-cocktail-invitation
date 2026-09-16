@@ -1,0 +1,483 @@
+/**
+ * LUXURY SANGEET & COCKTAIL INVITATION SCRIPT
+ * Ambient Particles, Audio Synthesizer, Calendar (.ics / Google), Map Navigation, RSVP & Confetti
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initParticles();
+  initScrollReveal();
+  initAudio();
+  initKeyboardNav();
+  initPills();
+  checkSavedRsvp();
+});
+
+/* ==========================================================================
+   0. FIXED FIRST PAGE INVITATION REVEAL CONTROLLER
+   ========================================================================== */
+let introOpened = false;
+
+function openMainWebsite() {
+  if (introOpened) return;
+  introOpened = true;
+
+  const overlay = document.getElementById('introScatteredPage');
+  if (!overlay) return;
+
+  // 1. Mark overlay opened to trigger card lift & photo disperse animation
+  overlay.classList.add('opened');
+  document.body.classList.remove('intro-active');
+
+  // 2. Start celebration background music automatically
+  if (!isAudioPlaying) {
+    toggleAudio();
+  }
+
+  // 3. Fire celebratory golden confetti & sparkle shower
+  if (typeof confetti === 'function') {
+    confetti({
+      particleCount: 85,
+      spread: 120,
+      origin: { y: 0.5, x: 0.5 },
+      colors: ['#ffe599', '#d4af37', '#ffffff', '#ffb300', '#ffd700'],
+      ticks: 260,
+      scalar: 1.15
+    });
+  }
+
+  // 4. Reveal hero section elements
+  setTimeout(() => {
+    const heroElements = document.querySelectorAll('#hero [data-reveal]');
+    heroElements.forEach(el => el.classList.add('revealed'));
+  }, 400);
+
+  // 5. Hide overlay completely after animation
+  setTimeout(() => {
+    overlay.style.display = 'none';
+  }, 1200);
+}
+
+/* ==========================================================================
+   1. KEYBOARD & SNAP NAVIGATION
+   ========================================================================== */
+function initKeyboardNav() {
+  const sections = document.querySelectorAll('.section');
+
+  window.addEventListener('keydown', (e) => {
+    if (!introOpened && (e.key === ' ' || e.key === 'Enter')) {
+      e.preventDefault();
+      openMainWebsite();
+      return;
+    }
+
+    // Don't intercept when user is typing in form inputs
+    const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+    if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') return;
+
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      scrollToRelativeSection(1);
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      scrollToRelativeSection(-1);
+    }
+  });
+
+  function scrollToRelativeSection(delta) {
+    const sectionArr = Array.from(sections);
+    const scrollPos = window.scrollY || document.documentElement.scrollTop;
+    const windowH = window.innerHeight;
+    
+    let currentIdx = 0;
+    sectionArr.forEach((sec, idx) => {
+      const top = sec.offsetTop;
+      if (scrollPos >= top - windowH * 0.3) {
+        currentIdx = idx;
+      }
+    });
+
+    const targetIdx = Math.max(0, Math.min(sectionArr.length - 1, currentIdx + delta));
+    sectionArr[targetIdx].scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+/* ==========================================================================
+   2. AMBIENT GOLD DUST PARTICLES
+   ========================================================================== */
+function initParticles() {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  const particleCount = 55;
+  const particles = [];
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 2.4 + 0.6;
+      this.speedY = -(Math.random() * 0.5 + 0.15);
+      this.speedX = (Math.random() - 0.5) * 0.35;
+      this.alpha = Math.random() * 0.65 + 0.2;
+      this.pulseSpeed = Math.random() * 0.02 + 0.008;
+      this.pulseDirection = 1;
+    }
+
+    update() {
+      this.y += this.speedY;
+      this.x += this.speedX;
+
+      this.alpha += this.pulseSpeed * this.pulseDirection;
+      if (this.alpha > 0.85) this.pulseDirection = -1;
+      if (this.alpha < 0.15) this.pulseDirection = 1;
+
+      if (this.y < -10) this.y = height + 10;
+      if (this.x < -10) this.x = width + 10;
+      if (this.x > width + 10) this.x = -10;
+    }
+
+    draw() {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(212, 175, 55, ${this.alpha})`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = 'rgba(245, 228, 168, 0.7)';
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    for (let p of particles) {
+      p.update();
+      p.draw();
+    }
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+/* ==========================================================================
+   3. SCROLL REVEAL OBSERVER
+   ========================================================================== */
+function initScrollReveal() {
+  const elements = document.querySelectorAll('[data-reveal]');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.getAttribute('data-delay') || 0;
+        setTimeout(() => {
+          entry.target.classList.add('revealed');
+        }, delay);
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  elements.forEach(el => observer.observe(el));
+}
+
+/* ==========================================================================
+   4. CALENDAR & VENUE ACTIONS
+   ========================================================================== */
+function addToGoogleCalendar() {
+  const title = encodeURIComponent("Sangeet & Cocktail | Nikhil & Sneha Reddy");
+  const details = encodeURIComponent("Join us for an enchanting evening filled with Music, Dance, Cocktails as we celebrate this beautiful beginning together!");
+  const location = encodeURIComponent("The Grand Palace Lawns, Hyderabad");
+  const dates = "20261122T133000Z/20261122T193000Z";
+  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
+  window.open(url, '_blank');
+}
+
+function downloadIcsFile() {
+  const icsData = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Sangeet Cocktail Celebration//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'BEGIN:VEVENT',
+    'SUMMARY:Sangeet & Cocktail | Nikhil & Sneha Reddy',
+    'DESCRIPTION:Join us for an enchanting evening filled with Music\\, Dance\\, Cocktails as we celebrate this beautiful beginning together!',
+    'LOCATION:The Grand Palace Lawns\\, Hyderabad',
+    'DTSTART:20261122T133000Z',
+    'DTEND:20261122T193000Z',
+    'STATUS:CONFIRMED',
+    'SEQUENCE:0',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = window.URL.createObjectURL(blob);
+  link.setAttribute('download', 'Nikhil_Sneha_Sangeet_Cocktails.ics');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+function openLocationMap() {
+  const query = encodeURIComponent("The Grand Palace Lawns, Hyderabad");
+  window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+}
+
+/* ==========================================================================
+   5. INTERACTIVE RSVP FORM & CELEBRATION CONFETTI
+   ========================================================================== */
+function initPills() {
+  const dietOptions = document.querySelectorAll('.diet-option');
+  dietOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      dietOptions.forEach(opt => opt.classList.remove('active'));
+      option.classList.add('active');
+    });
+  });
+}
+
+function handleAttendanceChange(isAttending) {
+  const acceptPill = document.getElementById('acceptPill');
+  const declinePill = document.getElementById('declinePill');
+  const countGroup = document.getElementById('guestCountGroup');
+  const mealGroup = document.getElementById('mealGroup');
+  const songGroup = document.getElementById('songGroup');
+
+  if (isAttending) {
+    acceptPill.classList.add('active');
+    declinePill.classList.remove('active');
+    if (countGroup) countGroup.style.display = 'flex';
+    if (mealGroup) mealGroup.style.display = 'flex';
+    if (songGroup) songGroup.style.display = 'flex';
+  } else {
+    declinePill.classList.add('active');
+    acceptPill.classList.remove('active');
+    if (countGroup) countGroup.style.display = 'none';
+    if (mealGroup) mealGroup.style.display = 'none';
+    if (songGroup) songGroup.style.display = 'none';
+  }
+}
+
+function adjustCount(delta) {
+  const input = document.getElementById('guestCount');
+  if (!input) return;
+  let val = parseInt(input.value) || 1;
+  val = Math.max(1, Math.min(10, val + delta));
+  input.value = val;
+}
+
+function handleRsvpSubmit(event) {
+  event.preventDefault();
+  const form = document.getElementById('rsvpForm');
+  const formData = new FormData(form);
+
+  const rsvpData = {
+    name: formData.get('guestName'),
+    phone: formData.get('guestPhone'),
+    attendance: formData.get('attendance'),
+    guests: formData.get('guestCount') || 1,
+    diet: formData.get('diet') || 'Veg',
+    song: formData.get('songRequest') || '',
+    wishes: formData.get('wishes') || '',
+    timestamp: new Date().toISOString()
+  };
+
+  localStorage.setItem('sangeet_rsvp', JSON.stringify(rsvpData));
+  triggerConfetti();
+  displayRsvpSuccess(rsvpData);
+}
+
+function displayRsvpSuccess(data) {
+  const form = document.getElementById('rsvpForm');
+  const successBox = document.getElementById('rsvpSuccessBox');
+  const summaryCard = document.getElementById('rsvpSummaryCard');
+  const msgEl = document.getElementById('successMessage');
+
+  if (!form || !successBox) return;
+
+  form.style.display = 'none';
+  successBox.style.display = 'block';
+
+  if (data.attendance === 'Attending') {
+    msgEl.innerHTML = `Dearest <strong>${data.name}</strong>, we are thrilled you'll be joining us! See you on the dance floor!`;
+    summaryCard.innerHTML = `
+      <div><strong>Guests:</strong> ${data.guests} person(s)</div>
+      <div><strong>Meal:</strong> ${data.diet}</div>
+      ${data.song ? `<div><strong>Requested Song:</strong> ${data.song}</div>` : ''}
+      ${data.wishes ? `<div><strong>Your Wishes:</strong> <em>"${data.wishes}"</em></div>` : ''}
+    `;
+  } else {
+    msgEl.innerHTML = `Dear <strong>${data.name}</strong>, we will truly miss you at the celebration, but your warm blessings mean the world to us!`;
+    summaryCard.innerHTML = `
+      <div><strong>Status:</strong> Regretfully Declining</div>
+      ${data.wishes ? `<div><strong>Your Wishes:</strong> <em>"${data.wishes}"</em></div>` : ''}
+    `;
+  }
+}
+
+function editRsvp() {
+  const form = document.getElementById('rsvpForm');
+  const successBox = document.getElementById('rsvpSuccessBox');
+  if (form && successBox) {
+    form.style.display = 'flex';
+    successBox.style.display = 'none';
+  }
+}
+
+function checkSavedRsvp() {
+  const saved = localStorage.getItem('sangeet_rsvp');
+  if (saved) {
+    try {
+      const data = JSON.parse(saved);
+      displayRsvpSuccess(data);
+    } catch (e) {
+      console.warn('Could not parse saved RSVP', e);
+    }
+  }
+}
+
+function triggerConfetti() {
+  if (typeof confetti === 'function') {
+    const end = Date.now() + 2.5 * 1000;
+    const colors = ['#d4af37', '#f7df8b', '#ffffff', '#e8ca92', '#b38528'];
+
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 60,
+        origin: { x: 0 },
+        colors: colors
+      });
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 60,
+        origin: { x: 1 },
+        colors: colors
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    }());
+  }
+}
+
+/* ==========================================================================
+   6. AMBIENT CELEBRATION AUDIO
+   Built-in Ambient Indian Chimes / Sitar Harmonics synthesizer
+   ========================================================================== */
+let audioCtx = null;
+let isAudioPlaying = false;
+let ambientInterval = null;
+
+function initAudio() {
+  const btn = document.getElementById('musicBtn');
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    toggleAudio();
+  });
+}
+
+function toggleAudio() {
+  const btn = document.getElementById('musicBtn');
+  const label = document.getElementById('audioLabel');
+
+  if (!isAudioPlaying) {
+    startAmbientMelody();
+    isAudioPlaying = true;
+    btn.classList.add('playing');
+    label.textContent = 'Pause Music';
+  } else {
+    stopAmbientMelody();
+    isAudioPlaying = false;
+    btn.classList.remove('playing');
+    label.textContent = 'Play Music';
+  }
+}
+
+function startAmbientMelody() {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!audioCtx) {
+      audioCtx = new AudioContext();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    const notes = [277.18, 311.13, 349.23, 415.30, 466.16, 554.37, 622.25, 698.46];
+    let noteIdx = 0;
+
+    function playPluck(freq, duration = 2.4, gainLevel = 0.08) {
+      if (!audioCtx || audioCtx.state !== 'running') return;
+      const now = audioCtx.currentTime;
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, now);
+
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.linearRampToValueAtTime(gainLevel, now + 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(now);
+      osc.stop(now + duration);
+    }
+
+    playPluck(notes[0], 3.5, 0.06);
+    playPluck(notes[3], 3.5, 0.05);
+    playPluck(notes[5], 3.5, 0.04);
+
+    ambientInterval = setInterval(() => {
+      const melodyPattern = [0, 3, 2, 4, 5, 4, 2, 3, 1, 0];
+      const n = notes[melodyPattern[noteIdx % melodyPattern.length]];
+      playPluck(n, 2.8, 0.07);
+      if (noteIdx % 3 === 0) {
+        playPluck(notes[0] / 2, 3.5, 0.05);
+      }
+      noteIdx++;
+    }, 750);
+
+  } catch (err) {
+    console.log('Web Audio could not start automatically', err);
+  }
+}
+
+function stopAmbientMelody() {
+  if (ambientInterval) {
+    clearInterval(ambientInterval);
+    ambientInterval = null;
+  }
+  if (audioCtx && audioCtx.state === 'running') {
+    audioCtx.suspend();
+  }
+}
