@@ -204,7 +204,7 @@ function initScrollReveal() {
    4. CALENDAR & VENUE ACTIONS
    ========================================================================== */
 function addToGoogleCalendar() {
-  const title = encodeURIComponent("Sangeet & Cocktail | Nikhil & Sneha Reddy");
+  const title = encodeURIComponent("Sangeet & Cocktail | Nikhil & Sreeja Reddy");
   const details = encodeURIComponent("Join us for an enchanting evening filled with Music, Dance, Cocktails as we celebrate this beautiful beginning together!");
   const location = encodeURIComponent("The Grand Palace Lawns, Hyderabad");
   const dates = "20261122T133000Z/20261122T193000Z";
@@ -220,7 +220,7 @@ function downloadIcsFile() {
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
-    'SUMMARY:Sangeet & Cocktail | Nikhil & Sneha Reddy',
+    'SUMMARY:Sangeet & Cocktail | Nikhil & Sreeja Reddy',
     'DESCRIPTION:Join us for an enchanting evening filled with Music\\, Dance\\, Cocktails as we celebrate this beautiful beginning together!',
     'LOCATION:The Grand Palace Lawns\\, Hyderabad',
     'DTSTART:20261122T133000Z',
@@ -234,7 +234,7 @@ function downloadIcsFile() {
   const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
   const link = document.createElement('a');
   link.href = window.URL.createObjectURL(blob);
-  link.setAttribute('download', 'Nikhil_Sneha_Sangeet_Cocktails.ics');
+  link.setAttribute('download', 'Nikhil_Sreeja_Sangeet_Cocktails.ics');
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

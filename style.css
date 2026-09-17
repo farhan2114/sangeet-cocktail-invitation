@@ -975,7 +975,7 @@ body.snap-scroll-body {
 
 /* ==========================================================================
    SECTION 6: CELEBRATION EVENTS CAROUSEL (EVENING HIGHLIGHTS)
-   Matching Reference Layout, Soft Rounded Cards & Transparent Controls
+   Plain, Elegant Cards (No Dark Fade Overlay) & Increased Prominent Sizing
    ========================================================================== */
 .section-events-showcase {
   background: radial-gradient(ellipse at 50% 45%, #17120e 0%, #060504 80%);
@@ -996,7 +996,7 @@ body.snap-scroll-body {
 
 .events-section-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
   color: #ffffff;
   font-weight: 700;
   letter-spacing: 1px;
@@ -1004,7 +1004,7 @@ body.snap-scroll-body {
 
 .events-carousel-container {
   width: 100%;
-  max-width: 940px;
+  max-width: 1080px;
   margin: 22px auto 0;
   position: relative;
 }
@@ -1012,14 +1012,14 @@ body.snap-scroll-body {
 .events-carousel-viewport {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  min-height: 320px;
-  max-height: 500px;
-  border-radius: 24px;
+  aspect-ratio: 16 / 8.6;
+  min-height: 420px;
+  max-height: 560px;
+  border-radius: 28px;
   overflow: hidden;
   border: 1.5px solid rgba(212, 175, 55, 0.45);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.22);
-  background: #15110d;
+  box-shadow: 0 30px 85px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.25);
+  background: #ffffff;
 }
 
 .event-card-slide {
@@ -1044,7 +1044,8 @@ body.snap-scroll-body {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .event-card-img {
@@ -1056,54 +1057,47 @@ body.snap-scroll-body {
   object-position: center;
 }
 
-.event-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(10, 8, 6, 0.2) 35%, rgba(10, 8, 6, 0.85) 75%, rgba(10, 8, 6, 0.97) 100%),
-              linear-gradient(90deg, rgba(10, 8, 6, 0.92) 0%, rgba(10, 8, 6, 0.5) 55%, transparent 100%);
-  pointer-events: none;
-}
-
+/* Plain Card Typography (Crisp Luxury Espresso & Gold against Light Card Background) */
 .event-card-text {
   position: relative;
   z-index: 5;
   text-align: left;
-  padding: 24px 34px 32px;
-  max-width: 620px;
+  padding: 36px 46px;
+  max-width: 58%;
 }
 
 .event-time-tag {
   font-family: var(--font-sans);
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 3px;
-  color: var(--gold-light);
+  letter-spacing: 2.5px;
+  color: #855318;
   text-transform: uppercase;
-  background: rgba(212, 175, 55, 0.22);
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  padding: 4px 12px;
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(180, 135, 45, 0.45);
+  padding: 5px 14px;
   border-radius: 20px;
   display: inline-block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   backdrop-filter: blur(8px);
 }
 
 .event-card-heading {
   font-family: var(--font-serif);
-  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
   font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 6px;
-  letter-spacing: 0.5px;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.9);
+  color: #1e130a;
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+  line-height: 1.15;
 }
 
 .event-card-summary {
   font-family: var(--font-sans);
-  font-size: clamp(0.82rem, 1.2vw, 1rem);
-  line-height: 1.55;
-  color: #ede5da;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  line-height: 1.6;
+  color: #4a3729;
+  font-weight: 400;
 }
 
 /* Subtle & Transparent Navigation Controls Matching Reference */
@@ -1111,11 +1105,11 @@ body.snap-scroll-body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(14, 11, 8, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(22, 15, 10, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(12px);
   color: #ffffff;
   display: flex;
@@ -1127,27 +1121,27 @@ body.snap-scroll-body {
 }
 
 .carousel-ctrl-btn:hover {
-  background: rgba(212, 175, 55, 0.45);
+  background: rgba(212, 175, 55, 0.5);
   border-color: var(--gold-primary);
   transform: translateY(-50%) scale(1.08);
-  box-shadow: 0 0 16px rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.6);
 }
 
-.carousel-ctrl-btn.ctrl-prev { left: 16px; }
-.carousel-ctrl-btn.ctrl-next { right: 16px; }
+.carousel-ctrl-btn.ctrl-prev { left: 20px; }
+.carousel-ctrl-btn.ctrl-next { right: 20px; }
 
 /* Carousel Indicator Dashes Matching Reference */
 .carousel-indicators-bar {
   position: absolute;
-  bottom: 14px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 8px;
   z-index: 10;
-  padding: 6px 14px;
-  background: rgba(10, 8, 6, 0.5);
+  padding: 6px 16px;
+  background: rgba(18, 12, 8, 0.5);
   border-radius: 20px;
   backdrop-filter: blur(8px);
 }
@@ -1928,173 +1922,357 @@ body.intro-active {
 }
 
 /* ==========================================================================
-   COMPREHENSIVE MOBILE & TABLET RESPONSIVENESS
+   COMPREHENSIVE MOBILE & TABLET RESPONSIVENESS OVERHAUL
+   Fluid touch scrolling, zero element clipping, perfectly proportional components
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Hero Section Mobile Polish */
+  /* 1. Remove forced snap-scroll locking on mobile for fluid natural scrolling */
+  html, body, body.snap-scroll-body, .fullpage-wrapper {
+    scroll-snap-type: none !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .section {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 100svh !important;
+    min-height: 100vh !important;
+    scroll-snap-align: none !important;
+    overflow: visible !important;
+    padding: 50px 16px 40px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Fixed Intro Scattered Page on Mobile */
+  .photo-rot-1, .photo-rot-2, .photo-rot-3, .photo-rot-4 {
+    width: clamp(75px, 20vw, 95px) !important;
+    opacity: 0.65;
+  }
+  .central-invitation-card {
+    width: 90vw !important;
+    max-width: 320px !important;
+  }
+  .card-gold-frame-inner {
+    padding: 22px 16px !important;
+  }
+  .card-main-title {
+    font-size: 1.4rem !important;
+  }
+  .card-couple-heading {
+    font-size: 1.6rem !important;
+  }
+
+  /* 3. Section 1: Hero Section Mobile Polish */
   .section-hero {
-    padding: 30px 16px 20px;
-    justify-content: space-evenly;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 60px 16px 40px !important;
+    min-height: 100vh !important;
+  }
+  .hero-top-banner {
+    margin-bottom: 10px !important;
+    text-align: center !important;
   }
   .invite-header-title {
-    font-size: clamp(1.4rem, 5vw, 1.9rem);
-    letter-spacing: 2px;
+    font-size: clamp(1.5rem, 5.5vw, 2.1rem) !important;
+    letter-spacing: 2px !important;
   }
   .invite-header-sub {
-    font-size: 0.72rem;
-    letter-spacing: 3px;
+    font-size: 0.74rem !important;
+    letter-spacing: 3px !important;
+  }
+  .hero-main-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .couple-illustration-wrapper {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    max-height: 38vh !important;
+    margin: 0 auto !important;
   }
   .couple-img {
-    max-width: clamp(200px, 58vw, 290px);
-    max-height: 38vh;
+    max-height: 34vh !important;
+    max-width: clamp(210px, 62vw, 290px) !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
   }
   .illustration-aura {
-    width: 260px;
-    height: 260px;
+    width: 280px !important;
+    height: 280px !important;
+  }
+  .couple-names-wrapper {
+    text-align: center !important;
+    width: 100% !important;
+    margin-top: 4px !important;
   }
   .script-name {
-    font-size: clamp(2.2rem, 7.8vw, 3rem);
+    font-size: clamp(2.4rem, 9.5vw, 3.4rem) !important;
+    line-height: 1.1 !important;
   }
   .script-ampersand {
-    font-size: clamp(1.5rem, 4.5vw, 2rem);
-    margin: 2px 0;
+    font-size: 1.8rem !important;
+    margin: 2px 0 !important;
   }
   .names-separator {
-    width: 80px;
-    margin: 8px auto 6px;
+    width: 90px !important;
+    margin: 8px auto 6px !important;
   }
   .hero-subtitle {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
+    font-size: 0.76rem !important;
+    letter-spacing: 2px !important;
+    max-width: 90% !important;
+    margin: auto !important;
   }
 
-  /* Two Hearts Photo Cards Side-by-Side */
+  /* 4. Section 2: Lets Celebrate Mobile */
+  .celebrate-fullscreen-bg {
+    height: auto !important;
+    min-height: 100vh !important;
+    padding: 80px 20px 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .celebrate-inner-content {
+    max-width: 95% !important;
+    text-align: center !important;
+  }
+  .celebrate-title {
+    font-size: clamp(2.5rem, 11vw, 4rem) !important;
+  }
+  .celebrate-desc {
+    font-size: clamp(0.95rem, 3.5vw, 1.15rem) !important;
+    line-height: 1.65 !important;
+    margin: auto !important;
+  }
+
+  /* 5. Section 3: Two Hearts Photo Cards Side-by-Side */
   .section-couple-showcase {
-    padding: 24px 12px;
-    justify-content: center;
+    padding: 60px 14px 40px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
   .section-title-wrap {
-    margin-bottom: 14px;
+    margin-bottom: 14px !important;
   }
   .title-white {
-    font-size: 1.7rem;
+    font-size: 1.7rem !important;
   }
   .title-gold {
-    font-size: 2.1rem;
-    margin-top: -6px;
+    font-size: 2.1rem !important;
+    margin-top: -6px !important;
   }
   .photo-frames-row {
-    gap: 12px;
-    padding: 0 4px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 12px auto 0 !important;
+    padding: 0 4px !important;
   }
   .photo-card {
-    max-width: 48%;
+    flex: 1 1 0 !important;
+    max-width: 48% !important;
+    min-width: 0 !important;
   }
   .photo-frame-inner {
-    aspect-ratio: 4 / 5;
-    border-radius: 8px;
+    width: 100% !important;
+    aspect-ratio: 3 / 4 !important;
+    height: auto !important;
+    max-height: 230px !important;
+    border-radius: 12px !important;
   }
   .photo-caption {
-    margin-top: 6px;
+    margin-top: 8px !important;
   }
   .person-name {
-    font-size: 0.92rem;
+    font-size: clamp(0.88rem, 3.6vw, 1.08rem) !important;
   }
   .person-degree {
-    font-size: 0.7rem;
+    font-size: 0.72rem !important;
   }
 
-  /* Calendar & Map Responsive Behavior */
-  .section-calendar-map {
-    height: auto;
-    min-height: 100vh;
-    padding: 40px 16px;
-    scroll-snap-align: none;
-  }
-  .calendar-map-container {
-    gap: 20px;
-  }
-  .split-col {
-    padding: 20px 16px;
-  }
-
-  /* Section 4: Date & Venue Mobile */
+  /* 6. Section 4: Date & Venue HD Mobile */
   .section-date-venue {
-    padding: 0;
+    padding: 0 !important;
+  }
+  .venue-fullscreen-bg {
+    height: auto !important;
+    min-height: 100vh !important;
+    padding: 80px 16px 60px !important;
   }
   .venue-date-number {
-    font-size: clamp(3.8rem, 16vw, 6rem);
+    font-size: clamp(4.5rem, 18vw, 7.5rem) !important;
   }
   .venue-date-month {
-    font-size: clamp(1.8rem, 7vw, 2.8rem);
-    letter-spacing: 6px;
+    font-size: clamp(2rem, 8vw, 3.2rem) !important;
+    letter-spacing: 5px !important;
   }
   .venue-date-day {
-    font-size: 0.85rem;
-    letter-spacing: 3px;
+    font-size: clamp(0.85rem, 3.4vw, 1.15rem) !important;
+    letter-spacing: 3px !important;
   }
   .dress-code-badge {
-    padding: 10px 22px;
+    padding: 10px 22px !important;
+    width: 90% !important;
+    max-width: 320px !important;
   }
   .dress-code-text {
-    font-size: 0.88rem;
+    font-size: 0.88rem !important;
   }
 
-  /* Section 6: Celebration Events Carousel Mobile */
+  /* 7. Section 5: Calendar & Map Responsive */
+  .section-calendar-map {
+    height: auto !important;
+    min-height: 100vh !important;
+    padding: 60px 16px 50px !important;
+  }
+  .calendar-map-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .split-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 22px 16px !important;
+    border-radius: 18px !important;
+  }
+  .calendar-widget {
+    padding: 12px 6px !important;
+  }
+  .cal-day-num {
+    padding: 6px 2px !important;
+    font-size: 0.82rem !important;
+  }
+  .map-square-wrapper {
+    width: 100% !important;
+    height: 220px !important;
+    min-height: 220px !important;
+  }
+
+  /* 8. Section 6: Celebration Events Carousel Mobile (Plain Cards, No Fade) */
   .section-events-showcase {
-    height: auto;
-    min-height: 100vh;
-    padding: 35px 14px;
-    scroll-snap-align: none;
+    height: auto !important;
+    min-height: 100vh !important;
+    padding: 60px 14px 50px !important;
+  }
+  .events-carousel-container {
+    width: 100% !important;
+    margin: 16px auto 0 !important;
   }
   .events-carousel-viewport {
-    aspect-ratio: auto;
-    height: 420px;
-    min-height: 380px;
-    border-radius: 18px;
+    width: 100% !important;
+    height: 420px !important;
+    min-height: 420px !important;
+    aspect-ratio: auto !important;
+    border-radius: 20px !important;
+  }
+  .event-card-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: stretch !important;
+    height: 100% !important;
+  }
+  .event-card-img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
   }
   .event-card-text {
-    padding: 18px 20px 48px;
+    position: relative !important;
+    z-index: 5 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 18px 46px !important;
+    text-align: left !important;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 248, 240, 0.88) 22%, rgba(255, 244, 232, 0.98) 100%) !important;
+  }
+  .event-time-tag {
+    font-size: 0.72rem !important;
+    padding: 4px 10px !important;
+    margin-bottom: 6px !important;
   }
   .event-card-heading {
-    font-size: 1.45rem;
+    font-size: clamp(1.35rem, 5.2vw, 1.75rem) !important;
+    margin-bottom: 6px !important;
+    color: #1a1007 !important;
   }
   .event-card-summary {
-    font-size: 0.8rem;
+    font-size: clamp(0.8rem, 3vw, 0.92rem) !important;
+    line-height: 1.5 !important;
+    color: #4a3729 !important;
   }
   .carousel-ctrl-btn {
-    width: 36px;
-    height: 36px;
+    width: 38px !important;
+    height: 38px !important;
+    top: 35% !important;
   }
-  .carousel-ctrl-btn.ctrl-prev { left: 8px; }
-  .carousel-ctrl-btn.ctrl-next { right: 8px; }
+  .carousel-ctrl-btn.ctrl-prev { left: 8px !important; }
+  .carousel-ctrl-btn.ctrl-next { right: 8px !important; }
   .carousel-indicators-bar {
-    bottom: 10px;
+    bottom: 10px !important;
+    padding: 4px 12px !important;
   }
 
-  /* Section 7: RSVP Responsive */
+  /* 9. Section 7: Modern RSVP Mobile */
   .section-rsvp {
-    height: auto;
-    min-height: 100vh;
-    padding: 40px 16px;
-    scroll-snap-align: none;
+    height: auto !important;
+    min-height: 100vh !important;
+    padding: 60px 14px 70px !important;
+    justify-content: center !important;
   }
   .rsvp-card {
-    padding: 24px 18px;
-    max-width: 100%;
+    padding: 26px 16px !important;
+    border-radius: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   .form-name-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
   }
   .rsvp-grid-fields {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
   }
   .form-group input,
   .form-group select,
   .form-group textarea {
-    font-size: 16px;
+    font-size: 16px !important;
+    padding: 12px 14px !important;
+  }
+  .dietary-pills, .attendance-options {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
   }
 
   /* Floating Audio Button */
@@ -2112,21 +2290,25 @@ body.intro-active {
 }
 
 @media (max-width: 420px) {
+  .form-name-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
   .photo-rot-1, .photo-rot-2, .photo-rot-3, .photo-rot-4 {
-    width: 88px;
+    width: 76px !important;
   }
   .central-invitation-card {
-    width: 88vw;
-    max-width: 290px;
+    width: 90vw !important;
+    max-width: 300px !important;
   }
   .card-gold-frame-inner {
-    padding: 18px 14px;
+    padding: 20px 14px !important;
   }
   .card-main-title {
-    font-size: 1.35rem;
+    font-size: 1.3rem !important;
   }
   .card-couple-heading {
-    font-size: 1.55rem;
+    font-size: 1.5rem !important;
   }
 }
 
