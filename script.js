@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAudio();
   initKeyboardNav();
   initPills();
+  initEventsCarousel();
   checkSavedRsvp();
 });
 
@@ -262,20 +263,17 @@ function handleAttendanceChange(isAttending) {
   const declinePill = document.getElementById('declinePill');
   const countGroup = document.getElementById('guestCountGroup');
   const mealGroup = document.getElementById('mealGroup');
-  const songGroup = document.getElementById('songGroup');
 
   if (isAttending) {
     acceptPill.classList.add('active');
     declinePill.classList.remove('active');
     if (countGroup) countGroup.style.display = 'flex';
     if (mealGroup) mealGroup.style.display = 'flex';
-    if (songGroup) songGroup.style.display = 'flex';
   } else {
     declinePill.classList.add('active');
     acceptPill.classList.remove('active');
     if (countGroup) countGroup.style.display = 'none';
     if (mealGroup) mealGroup.style.display = 'none';
-    if (songGroup) songGroup.style.display = 'none';
   }
 }
 
@@ -292,14 +290,19 @@ function handleRsvpSubmit(event) {
   const form = document.getElementById('rsvpForm');
   const formData = new FormData(form);
 
+  const firstName = (formData.get('firstName') || '').trim();
+  const lastName = (formData.get('lastName') || '').trim();
+  const fullName = `${firstName} ${lastName}`.trim() || 'Valued Guest';
+
   const rsvpData = {
-    name: formData.get('guestName'),
-    phone: formData.get('guestPhone'),
+    firstName: firstName,
+    lastName: lastName,
+    name: fullName,
+    email: (formData.get('guestEmail') || '').trim(),
     attendance: formData.get('attendance'),
     guests: formData.get('guestCount') || 1,
     diet: formData.get('diet') || 'Veg',
-    song: formData.get('songRequest') || '',
-    wishes: formData.get('wishes') || '',
+    wishes: (formData.get('wishes') || '').trim(),
     timestamp: new Date().toISOString()
   };
 
@@ -323,15 +326,16 @@ function displayRsvpSuccess(data) {
     msgEl.innerHTML = `Dearest <strong>${data.name}</strong>, we are thrilled you'll be joining us! See you on the dance floor!`;
     summaryCard.innerHTML = `
       <div><strong>Guests:</strong> ${data.guests} person(s)</div>
-      <div><strong>Meal:</strong> ${data.diet}</div>
-      ${data.song ? `<div><strong>Requested Song:</strong> ${data.song}</div>` : ''}
-      ${data.wishes ? `<div><strong>Your Wishes:</strong> <em>"${data.wishes}"</em></div>` : ''}
+      <div><strong>Email:</strong> ${data.email}</div>
+      <div><strong>Meal Preference:</strong> ${data.diet === 'Veg' ? '🌱 Vegetarian' : '🍗 Non-Veg'}</div>
+      ${data.wishes ? `<div><strong>Your Blessings:</strong> <em>"${data.wishes}"</em></div>` : ''}
     `;
   } else {
     msgEl.innerHTML = `Dear <strong>${data.name}</strong>, we will truly miss you at the celebration, but your warm blessings mean the world to us!`;
     summaryCard.innerHTML = `
       <div><strong>Status:</strong> Regretfully Declining</div>
-      ${data.wishes ? `<div><strong>Your Wishes:</strong> <em>"${data.wishes}"</em></div>` : ''}
+      <div><strong>Email:</strong> ${data.email}</div>
+      ${data.wishes ? `<div><strong>Your Blessings:</strong> <em>"${data.wishes}"</em></div>` : ''}
     `;
   }
 }
@@ -481,3 +485,76 @@ function stopAmbientMelody() {
     audioCtx.suspend();
   }
 }
+
+/* ==========================================================================
+   7. EVENING HIGHLIGHTS AUTO CAROUSEL (2-SECOND AUTO ROTATION)
+   Matches Reference Layout & Timing
+   ========================================================================== */
+let currentEventIndex = 0;
+let carouselTimer = null;
+const eventSlideDuration = 2000; // 2 seconds per slide
+
+function initEventsCarousel() {
+  const container = document.getElementById('eventsCarousel');
+  if (!container) return;
+
+  // Start 2-second auto rotation
+  startCarouselTimer();
+
+  // Pause on hover or touch, resume when mouse leaves
+  container.addEventListener('mouseenter', stopCarouselTimer);
+  container.addEventListener('mouseleave', startCarouselTimer);
+  container.addEventListener('touchstart', stopCarouselTimer, { passive: true });
+  container.addEventListener('touchend', startCarouselTimer, { passive: true });
+}
+
+function startCarouselTimer() {
+  stopCarouselTimer();
+  carouselTimer = setInterval(() => {
+    nextEventSlide();
+  }, eventSlideDuration);
+}
+
+function stopCarouselTimer() {
+  if (carouselTimer) {
+    clearInterval(carouselTimer);
+    carouselTimer = null;
+  }
+}
+
+function goToEventSlide(index) {
+  const slides = document.querySelectorAll('.event-card-slide');
+  const indicators = document.querySelectorAll('.indicator-dash');
+  if (!slides.length) return;
+
+  const total = slides.length;
+  currentEventIndex = (index + total) % total;
+
+  slides.forEach((slide, idx) => {
+    if (idx === currentEventIndex) {
+      slide.classList.add('active');
+    } else {
+      slide.classList.remove('active');
+    }
+  });
+
+  indicators.forEach((ind, idx) => {
+    if (idx === currentEventIndex) {
+      ind.classList.add('active');
+    } else {
+      ind.classList.remove('active');
+    }
+  });
+
+  // Restart timer after user interaction
+  startCarouselTimer();
+}
+
+function nextEventSlide() {
+  goToEventSlide(currentEventIndex + 1);
+}
+
+function prevEventSlide() {
+  goToEventSlide(currentEventIndex - 1);
+}
+

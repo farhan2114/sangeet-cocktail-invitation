@@ -219,10 +219,23 @@
       </div>
     </section>
 
-    <!-- ================= SECTION 4: DATE & VENUE (FULLSCREEN VENUE IMAGE) ================= -->
+    <!-- ================= SECTION 4: DATE & VENUE (HD LAWN IMAGE + DATE + DRESS CODE) ================= -->
     <section class="section section-date-venue" id="date-venue" data-index="3">
-      <div class="venue-fullscreen-bg" style="background-image: url('assets/images/venue_banner.png');">
-        <div class="venue-overlay-subtle"></div>
+      <div class="venue-fullscreen-bg" style="background-image: url('assets/images/venue_lawn_hd.jpg');">
+        <div class="venue-overlay-gradient"></div>
+        <div class="venue-date-content" data-reveal="fade-up">
+          <div class="venue-crest-mark">✦</div>
+          <div class="venue-date-number">22</div>
+          <div class="venue-date-month">November</div>
+          <div class="venue-date-day">Sunday &bull; 7:00 PM Onwards</div>
+          <div class="venue-gold-divider"></div>
+          
+          <!-- Dress Code Under Date -->
+          <div class="dress-code-badge" data-reveal="fade-up" data-delay="150">
+            <span class="dress-code-tag">✦ DRESS CODE ✦</span>
+            <span class="dress-code-text">Indo-Western or Cocktail Attire</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -318,10 +331,6 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
               <span>Add to Google Calendar</span>
             </button>
-            <button class="cal-action-btn secondary" onclick="downloadIcsFile()">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span>Apple / Outlook (.ics)</span>
-            </button>
           </div>
         </div>
 
@@ -361,27 +370,91 @@
       </div>
     </section>
 
-    <!-- ================= SECTION 6: VIBE TYPOGRAPHY ================= -->
-    <section class="section section-vibe-words" id="vibe-words" data-index="5">
+    <!-- ================= SECTION 6: CELEBRATION EVENTS CAROUSEL ================= -->
+    <section class="section section-events-showcase" id="celebration-events" data-index="5">
 
-      <!-- Sparkly Star Decorations in Empty Spaces -->
-      <div class="sparkle-deco spk-vibe-left" aria-hidden="true">
-        <img src="assets/images/sparkle_star_large.png" alt="" class="anim-twinkle">
-      </div>
-      <div class="sparkle-deco spk-vibe-right" aria-hidden="true">
-        <img src="assets/images/sparkle_star_med1.png" alt="" class="anim-twinkle-delay1">
-      </div>
-      <div class="sparkle-deco spk-vibe-bot" aria-hidden="true">
-        <img src="assets/images/sparkle_star_med2.png" alt="" class="anim-twinkle-delay2">
+      <!-- Section Title Wrap -->
+      <div class="section-title-wrap" data-reveal="fade-down">
+        <p class="events-section-eyebrow">A Night To Remember</p>
+        <h2 class="events-section-title">Evening Highlights</h2>
+        <div class="title-gold-divider"></div>
       </div>
 
-      <div class="vibe-container" data-reveal="zoom-in">
-        <span class="vibe-word vibe-dance">DANCE</span>
-        <span class="vibe-word vibe-music">MUSIC</span>
-        <span class="vibe-word vibe-cocktails">COCKTAILS</span>
-        <span class="vibe-word vibe-memories">MEMORIES</span>
+      <!-- 4-Card Auto Carousel (2-Second Timer) Matching Reference Design -->
+      <div class="events-carousel-container" data-reveal="zoom-in">
+        <div class="events-carousel-viewport" id="eventsCarousel">
+          
+          <!-- Slide 1: Dance -->
+          <div class="event-card-slide active" data-index="0">
+            <div class="event-card-inner">
+              <img src="assets/images/card_dance.png" alt="Dance Performances" class="event-card-img">
+              <div class="event-card-overlay"></div>
+              <div class="event-card-text">
+                <span class="event-time-tag">07:30 PM &bull; EVENT 01</span>
+                <h3 class="event-card-heading">Dance Performances</h3>
+                <p class="event-card-summary">Family choreographed sangeet performances followed by an electrifying open dance floor.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Music -->
+          <div class="event-card-slide" data-index="1">
+            <div class="event-card-inner">
+              <img src="assets/images/card_music.png" alt="Live Music & DJ Beats" class="event-card-img">
+              <div class="event-card-overlay"></div>
+              <div class="event-card-text">
+                <span class="event-time-tag">08:45 PM &bull; EVENT 02</span>
+                <h3 class="event-card-heading">Live Music &amp; DJ Beats</h3>
+                <p class="event-card-summary">High-voltage Bollywood, Punjabi &amp; retro club tracks curated by our DJ to keep the party alive.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Cocktails -->
+          <div class="event-card-slide" data-index="2">
+            <div class="event-card-inner">
+              <img src="assets/images/card_cocktails.png" alt="Cocktails & Toasting" class="event-card-img">
+              <div class="event-card-overlay"></div>
+              <div class="event-card-text">
+                <span class="event-time-tag">09:30 PM &bull; EVENT 03</span>
+                <h3 class="event-card-heading">Cocktails &amp; Toasting</h3>
+                <p class="event-card-summary">Curated mixology bar featuring handcrafted signature cocktails, premium spirits &amp; celebratory toasts.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4: Memories -->
+          <div class="event-card-slide" data-index="3">
+            <div class="event-card-inner">
+              <img src="assets/images/card_memories.png" alt="Polaroids & Memories" class="event-card-img">
+              <div class="event-card-overlay"></div>
+              <div class="event-card-text">
+                <span class="event-time-tag">10:30 PM &bull; EVENT 04</span>
+                <h3 class="event-card-heading">Polaroids &amp; Memories</h3>
+                <p class="event-card-summary">Capture timeless memories at our instant polaroid photo station and sign the couple's keepsake book.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subtle & Transparent Navigation Buttons (Matching Reference) -->
+          <button class="carousel-ctrl-btn ctrl-prev" id="carouselPrev" onclick="prevEventSlide()" aria-label="Previous slide">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button class="carousel-ctrl-btn ctrl-next" id="carouselNext" onclick="nextEventSlide()" aria-label="Next slide">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+
+          <!-- Carousel Indicator Dots/Bars (Matching Reference) -->
+          <div class="carousel-indicators-bar" id="carouselIndicators">
+            <span class="indicator-dash active" onclick="goToEventSlide(0)"></span>
+            <span class="indicator-dash" onclick="goToEventSlide(1)"></span>
+            <span class="indicator-dash" onclick="goToEventSlide(2)"></span>
+            <span class="indicator-dash" onclick="goToEventSlide(3)"></span>
+          </div>
+
+        </div>
       </div>
-      <p class="vibe-tagline" data-reveal="fade-up">Get ready for an electrifying night of rhythm, toasts, and unforgettable celebration!</p>
+
     </section>
 
     <!-- ================= SECTION 7: INTERACTIVE RSVP & SEAMLESS GOLDEN ENDING ================= -->
@@ -405,18 +478,28 @@
 
         <form id="rsvpForm" class="rsvp-form" onsubmit="handleRsvpSubmit(event)">
           <div class="rsvp-grid-fields">
-            <!-- Left Column: Guest Info -->
+            <!-- Left Column: Guest Identity & Attendance -->
             <div class="rsvp-col">
-              <div class="form-group">
-                <label for="guestName">Your Full Name <span class="req">*</span></label>
-                <input type="text" id="guestName" name="guestName" required placeholder="e.g. Aditi &amp; Rahul Sharma">
+              
+              <!-- First & Last Name Fields -->
+              <div class="form-name-row">
+                <div class="form-group">
+                  <label for="firstName">First Name <span class="req">*</span></label>
+                  <input type="text" id="firstName" name="firstName" required placeholder="First Name" autocomplete="given-name">
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name <span class="req">*</span></label>
+                  <input type="text" id="lastName" name="lastName" required placeholder="Last Name" autocomplete="family-name">
+                </div>
               </div>
 
+              <!-- Email ID with Basic Validation -->
               <div class="form-group">
-                <label for="guestPhone">Phone or WhatsApp <span class="req">*</span></label>
-                <input type="tel" id="guestPhone" name="guestPhone" required placeholder="+91 98765 43210">
+                <label for="guestEmail">Email Address <span class="req">*</span></label>
+                <input type="email" id="guestEmail" name="guestEmail" required placeholder="name@example.com" autocomplete="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address (e.g. name@example.com)">
               </div>
 
+              <!-- Attendance Pill Radios -->
               <div class="form-group">
                 <label>Will you be attending? <span class="req">*</span></label>
                 <div class="attendance-options">
@@ -431,18 +514,20 @@
                 </div>
               </div>
 
+              <!-- Guest Count Counter -->
               <div class="form-group" id="guestCountGroup">
                 <label for="guestCount">Number of Guests Attending</label>
                 <div class="number-counter">
-                  <button type="button" class="counter-btn" onclick="adjustCount(-1)">−</button>
+                  <button type="button" class="counter-btn" onclick="adjustCount(-1)" aria-label="Decrease guests">−</button>
                   <input type="number" id="guestCount" name="guestCount" value="2" min="1" max="10" readonly>
-                  <button type="button" class="counter-btn" onclick="adjustCount(1)">+</button>
+                  <button type="button" class="counter-btn" onclick="adjustCount(1)" aria-label="Increase guests">+</button>
                 </div>
               </div>
             </div>
 
-            <!-- Right Column: Preferences & Song Request -->
+            <!-- Right Column: Preferences & Warm Wishes -->
             <div class="rsvp-col">
+              <!-- Dietary Preference (Only Veg & Non-Veg, Jain removed) -->
               <div class="form-group" id="mealGroup">
                 <label>Dietary Preference</label>
                 <div class="dietary-pills">
@@ -454,21 +539,13 @@
                     <input type="radio" name="diet" value="Non-Veg">
                     <span>🍗 Non-Veg</span>
                   </label>
-                  <label class="diet-option">
-                    <input type="radio" name="diet" value="Jain">
-                    <span>✨ Jain</span>
-                  </label>
                 </div>
               </div>
 
-              <div class="form-group" id="songGroup">
-                <label for="songRequest">Song Request for the DJ 🎶</label>
-                <input type="text" id="songRequest" name="songRequest" placeholder="What song gets you on the dance floor?">
-              </div>
-
+              <!-- Warm Wishes For Couple (DJ Song Request Removed) -->
               <div class="form-group">
                 <label for="wishes">Warm Wishes for the Couple</label>
-                <textarea id="wishes" name="wishes" rows="2" placeholder="Leave a sweet message for Nikhil &amp; Sneha..."></textarea>
+                <textarea id="wishes" name="wishes" rows="4" placeholder="Leave your heartfelt blessings &amp; love for Nikhil &amp; Sneha..."></textarea>
               </div>
             </div>
           </div>
@@ -487,19 +564,6 @@
           <div class="rsvp-summary-card" id="rsvpSummaryCard"></div>
           <button type="button" class="edit-rsvp-btn" onclick="editRsvp()">Edit Your Response</button>
         </div>
-      </div>
-
-      <!-- Golden Ending Stage: Seamless Golden Background without any black bar -->
-      <div class="golden-ending-stage">
-        <div class="golden-ending-dancers">
-          <img src="assets/images/dancers_gold.png" alt="Dancing Silhouettes" class="dancers-silhouette-img" onerror="this.src='assets/images/dancers_dark.png'">
-        </div>
-
-        <!-- Footer directly integrated onto the Golden Background (NO black column) -->
-        <footer class="site-footer-golden">
-          <p class="wedding-hashtag-gold">#NikhilWedsSneha &bull; #SnehaKiNikhil</p>
-          <p class="footer-copy-gold">&copy; 2026 Sangeet &amp; Cocktail Celebration. With Love &amp; Gratitude.</p>
-        </footer>
       </div>
     </section>
 
