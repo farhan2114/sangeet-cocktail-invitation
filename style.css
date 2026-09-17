@@ -59,7 +59,7 @@ body.snap-scroll-body {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 1;
+  z-index: 100000;
 }
 
 /* Main Fullpage Wrapper */
@@ -1560,9 +1560,86 @@ body.intro-active {
 .scattered-spotlight {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(255, 235, 170, 0.14) 0%, rgba(212, 175, 55, 0.05) 50%, transparent 80%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 235, 170, 0.16) 0%, rgba(212, 175, 55, 0.06) 50%, transparent 80%);
   pointer-events: none;
 }
+
+/* Ambient Floating Light Bokeh Orbs in Background */
+.intro-bokeh-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(40px);
+  z-index: 2;
+  animation: orbFloat 8s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+  width: 280px;
+  height: 280px;
+  top: 10%;
+  left: 15%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 70%);
+  animation-duration: 9s;
+}
+
+.orb-2 {
+  width: 320px;
+  height: 320px;
+  bottom: 8%;
+  right: 12%;
+  background: radial-gradient(circle, rgba(255, 220, 140, 0.15) 0%, transparent 70%);
+  animation-duration: 11s;
+  animation-delay: 2s;
+}
+
+.orb-3 {
+  width: 220px;
+  height: 220px;
+  bottom: 25%;
+  left: 10%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, transparent 70%);
+  animation-duration: 8.5s;
+  animation-delay: 1s;
+}
+
+.orb-4 {
+  width: 260px;
+  height: 260px;
+  top: 15%;
+  right: 18%;
+  background: radial-gradient(circle, rgba(255, 235, 170, 0.16) 0%, transparent 70%);
+  animation-duration: 10s;
+  animation-delay: 3s;
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(0.9); opacity: 0.6; }
+  50% { transform: translate(18px, -22px) scale(1.1); opacity: 0.95; }
+  100% { transform: translate(-15px, 15px) scale(0.95); opacity: 0.7; }
+}
+
+/* Twinkling Star Decorations on Intro Stage */
+.intro-sparkle-deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  user-select: none;
+}
+
+.intro-sparkle-deco img {
+  display: block;
+  width: clamp(18px, 2.2vw, 32px);
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 235, 120, 0.85));
+}
+
+.spk-intro-tl { top: 7%; left: 6%; }
+.spk-intro-tr { top: 8%; right: 7%; }
+.spk-intro-bl { bottom: 7%; left: 7%; }
+.spk-intro-br { bottom: 8%; right: 6%; }
+.spk-intro-mid-l { top: 48%; left: 3%; }
+.spk-intro-mid-r { top: 48%; right: 3%; }
 
 .scattered-photos-stage {
   position: relative;
@@ -1573,6 +1650,7 @@ body.intro-active {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 4;
 }
 
 /* Individual Polaroid Photo Items */
@@ -1612,65 +1690,49 @@ body.intro-active {
 
 /* Scrambled Casual Angles and Floor Placement */
 .photo-rot-1 {
-  top: 5%;
-  left: 6%;
-  width: clamp(155px, 19vw, 245px);
+  top: 6%;
+  left: 7%;
+  width: clamp(160px, 17vw, 230px);
   transform: rotate(-13deg);
   z-index: 10;
 }
 
 .photo-rot-2 {
-  top: 6%;
+  top: 7%;
   right: 7%;
-  width: clamp(155px, 18.5vw, 240px);
+  width: clamp(160px, 17vw, 230px);
   transform: rotate(14deg);
   z-index: 11;
 }
 
 .photo-rot-3 {
-  bottom: 5%;
-  left: 8%;
-  width: clamp(160px, 19.5vw, 250px);
+  bottom: 6%;
+  left: 9%;
+  width: clamp(165px, 17.5vw, 235px);
   transform: rotate(11deg);
   z-index: 12;
 }
 
 .photo-rot-4 {
-  bottom: 6%;
-  right: 6%;
-  width: clamp(155px, 18.5vw, 240px);
+  bottom: 7%;
+  right: 7%;
+  width: clamp(160px, 17vw, 230px);
   transform: rotate(-12deg);
   z-index: 10;
 }
 
-.photo-rot-5 {
-  top: 44%;
-  left: 3%;
-  width: clamp(135px, 15.5vw, 205px);
-  transform: translateY(-50%) rotate(-6deg);
-  z-index: 8;
-}
-
-.photo-rot-6 {
-  top: 44%;
-  right: 3%;
-  width: clamp(135px, 15.5vw, 205px);
-  transform: translateY(-50%) rotate(8deg);
-  z-index: 8;
-}
-
 /* Hover lift on photos */
 .scatter-photo-item:hover {
-  transform: scale(1.08) translateY(-8px);
+  transform: scale(1.08) translateY(-8px) !important;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
   z-index: 25;
 }
 
-/* THE CENTRAL INVITATION CARD IN THE MIDDLE (CLEAN, SPACIOUS & SIMPLE) */
+/* THE CENTRAL INVITATION CARD IN THE MIDDLE (CLEAN, LUXURY & ELEGANT) */
 .central-invitation-card {
   position: relative;
   z-index: 30;
-  width: clamp(290px, 34vw, 420px);
+  width: clamp(290px, 32vw, 400px);
   cursor: pointer;
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, opacity 0.5s ease;
   will-change: transform, opacity;
@@ -1686,6 +1748,15 @@ body.intro-active {
   transform: scale(1.03) translateY(-10px) !important;
 }
 
+.card-aura-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(212, 175, 55, 0.08) 55%, transparent 75%);
+  border-radius: 28px;
+  pointer-events: none;
+  animation: auraPulse 4s infinite alternate ease-in-out;
+}
+
 .card-gold-frame-outer {
   background: linear-gradient(145deg, #1f140c 0%, #110b07 60%, #19100a 100%);
   border: 1.5px solid var(--gold-primary);
@@ -1694,15 +1765,49 @@ body.intro-active {
   box-shadow: 0 25px 75px rgba(0, 0, 0, 0.95),
               0 0 45px rgba(212, 175, 55, 0.35),
               inset 0 0 15px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
 }
 
 .card-gold-frame-inner {
   position: relative;
   border: 1px dashed rgba(212, 175, 55, 0.45);
   border-radius: 12px;
-  padding: 36px 28px 30px;
+  padding: 34px 26px 28px;
   text-align: center;
   background: radial-gradient(ellipse at 50% 30%, rgba(32, 21, 13, 0.95) 0%, rgba(12, 8, 4, 0.98) 100%);
+  overflow: hidden;
+}
+
+/* Corner Ornaments on Central Card */
+.card-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--gold-primary);
+  pointer-events: none;
+}
+
+.card-corner.corner-tl { top: 8px; left: 8px; border-top: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); }
+.card-corner.corner-tr { top: 8px; right: 8px; border-top: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); }
+.card-corner.corner-bl { bottom: 8px; left: 8px; border-bottom: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); }
+.card-corner.corner-br { bottom: 8px; right: 8px; border-bottom: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); }
+
+.card-shine-bar {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 235, 170, 0.25), transparent);
+  transform: skewX(-25deg);
+  pointer-events: none;
+  animation: cardShimmer 6s infinite ease-in-out;
+}
+
+@keyframes cardShimmer {
+  0%, 80% { left: -120%; }
+  100% { left: 200%; }
 }
 
 .card-crest-top {
@@ -1714,7 +1819,7 @@ body.intro-active {
 
 .card-main-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 2.8vw, 2.7rem);
+  font-size: clamp(2rem, 2.7vw, 2.6rem);
   font-weight: 800;
   color: #ffffff;
   letter-spacing: 1.5px;
@@ -1795,45 +1900,6 @@ body.intro-active {
 .intro-scattered-overlay.opened .scatter-photo-item {
   transform: scale(0.8);
   opacity: 0;
-}
-
-/* Mobile responsive styling for the scattered photos */
-@media (max-width: 768px) {
-  .photo-rot-1 { top: 2%; left: 3%; width: 130px; }
-  .photo-rot-2 { top: 2%; right: 3%; width: 130px; }
-  .photo-rot-3 { bottom: 2%; left: 3%; width: 135px; }
-  .photo-rot-4 { bottom: 2%; right: 3%; width: 130px; }
-  .central-invitation-card { width: 92vw; max-width: 340px; }
-  .card-gold-frame-inner { padding: 24px 18px; }
-}
-
-/* (Decoration items removed — disco balls and drinks images have been removed from the site) */
-
-
-@keyframes pulseCardBtn {
-  0% { transform: scale(1); box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5); }
-  100% { transform: scale(1.05); box-shadow: 0 7px 28px rgba(212, 175, 55, 0.85); }
-}
-
-/* Card Opening Exit Animation */
-.intro-scattered-overlay.opened .central-invitation-card {
-  transform: scale(1.15) !important;
-  opacity: 0;
-}
-
-.intro-scattered-overlay.opened .scatter-photo-item {
-  transform: scale(0.8);
-  opacity: 0;
-}
-
-/* Mobile responsive styling for the scattered photos */
-@media (max-width: 768px) {
-  .photo-rot-1 { top: 2%; left: 3%; width: 110px; }
-  .photo-rot-2 { top: 2%; right: 3%; width: 110px; }
-  .photo-rot-3 { bottom: 2%; left: 3%; width: 115px; }
-  .photo-rot-4 { bottom: 2%; right: 3%; width: 110px; }
-  .central-invitation-card { width: 92vw; max-width: 330px; }
-  .card-gold-frame-inner { padding: 22px 16px; }
 }
 
 /* ==========================================================================
@@ -1948,22 +2014,87 @@ body.intro-active {
   }
 
   /* 2. Fixed Intro Scattered Page on Mobile */
-  .photo-rot-1, .photo-rot-2, .photo-rot-3, .photo-rot-4 {
-    width: clamp(75px, 20vw, 95px) !important;
-    opacity: 0.65;
+  .scattered-photos-stage {
+    width: 100vw !important;
+    height: 100svh !important;
+    height: 100dvh !important;
+    padding: 10px !important;
+    overflow: hidden !important;
+  }
+  .photo-rot-1 {
+    top: 4% !important;
+    left: 3% !important;
+    width: clamp(86px, 24vw, 112px) !important;
+    transform: rotate(-11deg) !important;
+    opacity: 0.95 !important;
+    z-index: 6 !important;
+  }
+  .photo-rot-2 {
+    top: 5% !important;
+    right: 3% !important;
+    width: clamp(86px, 24vw, 112px) !important;
+    transform: rotate(13deg) !important;
+    opacity: 0.95 !important;
+    z-index: 6 !important;
+  }
+  .photo-rot-3 {
+    bottom: 4% !important;
+    left: 3% !important;
+    width: clamp(88px, 24.5vw, 114px) !important;
+    transform: rotate(9deg) !important;
+    opacity: 0.95 !important;
+    z-index: 6 !important;
+  }
+  .photo-rot-4 {
+    bottom: 5% !important;
+    right: 3% !important;
+    width: clamp(86px, 24vw, 112px) !important;
+    transform: rotate(-10deg) !important;
+    opacity: 0.95 !important;
+    z-index: 6 !important;
+  }
+  .photo-polaroid {
+    padding: 6px 6px 16px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.85) !important;
+  }
+  .polaroid-label {
+    font-size: clamp(0.58rem, 2.2vw, 0.68rem) !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 5px !important;
   }
   .central-invitation-card {
-    width: 90vw !important;
-    max-width: 320px !important;
+    width: clamp(260px, 80vw, 305px) !important;
+    z-index: 20 !important;
   }
   .card-gold-frame-inner {
-    padding: 22px 16px !important;
+    padding: 22px 14px 18px !important;
+  }
+  .card-crest-top {
+    font-size: 1rem !important;
+    margin-bottom: 2px !important;
   }
   .card-main-title {
-    font-size: 1.4rem !important;
+    font-size: clamp(1.4rem, 5.2vw, 1.75rem) !important;
+    margin: 2px 0 6px !important;
+    letter-spacing: 1px !important;
+  }
+  .card-gold-rule {
+    margin: 6px auto 8px !important;
+    width: 65% !important;
   }
   .card-couple-heading {
-    font-size: 1.6rem !important;
+    font-size: clamp(1.75rem, 6.8vw, 2.2rem) !important;
+    margin: 0 0 6px !important;
+  }
+  .meta-date-simple {
+    font-size: 0.72rem !important;
+    letter-spacing: 1.5px !important;
+    margin: 6px 0 14px !important;
+  }
+  .card-click-cta {
+    padding: 9px 20px !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 1.2px !important;
   }
 
   /* 3. Section 1: Hero Section Mobile Polish */
@@ -2295,20 +2426,19 @@ body.intro-active {
     gap: 12px !important;
   }
   .photo-rot-1, .photo-rot-2, .photo-rot-3, .photo-rot-4 {
-    width: 76px !important;
+    width: clamp(76px, 22vw, 96px) !important;
   }
   .central-invitation-card {
-    width: 90vw !important;
-    max-width: 300px !important;
+    width: clamp(250px, 82vw, 295px) !important;
   }
   .card-gold-frame-inner {
-    padding: 20px 14px !important;
+    padding: 18px 12px !important;
   }
   .card-main-title {
-    font-size: 1.3rem !important;
+    font-size: 1.35rem !important;
   }
   .card-couple-heading {
-    font-size: 1.5rem !important;
+    font-size: 1.65rem !important;
   }
 }
 
