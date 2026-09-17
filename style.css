@@ -1019,7 +1019,7 @@ body.snap-scroll-body {
   overflow: hidden;
   border: 1.5px solid rgba(212, 175, 55, 0.45);
   box-shadow: 0 30px 85px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.25);
-  background: #ffffff;
+  background: #14100c;
 }
 
 .event-card-slide {
@@ -1057,13 +1057,13 @@ body.snap-scroll-body {
   object-position: center;
 }
 
-/* Plain Card Typography (Crisp Luxury Espresso & Gold against Light Card Background) */
+/* Plain Card Typography (Crisp Luxury Espresso & Gold strictly inside the card) */
 .event-card-text {
   position: relative;
   z-index: 5;
   text-align: left;
-  padding: 36px 46px;
-  max-width: 58%;
+  padding: clamp(24px, 3.5vw, 42px) clamp(20px, 3vw, 36px) clamp(24px, 3.5vw, 42px) clamp(64px, 6.5vw, 92px);
+  max-width: 52%;
 }
 
 .event-time-tag {
@@ -1084,7 +1084,7 @@ body.snap-scroll-body {
 
 .event-card-heading {
   font-family: var(--font-serif);
-  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   font-weight: 700;
   color: #1e130a;
   margin-bottom: 10px;
@@ -1094,7 +1094,7 @@ body.snap-scroll-body {
 
 .event-card-summary {
   font-family: var(--font-sans);
-  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  font-size: clamp(0.88rem, 1.25vw, 1.05rem);
   line-height: 1.6;
   color: #4a3729;
   font-weight: 400;
