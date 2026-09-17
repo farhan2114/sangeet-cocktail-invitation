@@ -452,14 +452,14 @@ body.snap-scroll-body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: clamp(12px, 3.5vw, 50px);
+  gap: clamp(20px, 4.5vw, 65px);
   width: 100%;
-  max-width: 1100px;
+  max-width: 1150px;
 }
 
 .photo-card {
   flex: 1;
-  max-width: clamp(140px, 28vw, 390px);
+  max-width: clamp(200px, 32vw, 440px);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -470,20 +470,20 @@ body.snap-scroll-body {
 
 .photo-frame-inner {
   width: 100%;
-  aspect-ratio: 4 / 5.2;
+  aspect-ratio: 4 / 5;
   background: #15120f;
-  border: 2px solid rgba(212, 175, 55, 0.5);
-  border-radius: 12px;
+  border: 2.5px solid rgba(212, 175, 55, 0.6);
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 25px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.35);
   transition: all 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .photo-card:hover .photo-frame-inner {
   transform: translateY(-8px) scale(1.02);
   border-color: var(--gold-primary);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 30px 75px rgba(0, 0, 0, 0.95), 0 0 45px rgba(212, 175, 55, 0.6);
 }
 
 .couple-photo {
@@ -500,16 +500,16 @@ body.snap-scroll-body {
 /* Corner Ornaments on Photo Frames */
 .frame-corner {
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-color: var(--gold-primary);
   pointer-events: none;
 }
 
-.corner-tl { top: 10px; left: 10px; border-top: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); }
-.corner-tr { top: 10px; right: 10px; border-top: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); }
-.corner-bl { bottom: 10px; left: 10px; border-bottom: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); }
-.corner-br { bottom: 10px; right: 10px; border-bottom: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); }
+.corner-tl { top: 12px; left: 12px; border-top: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); }
+.corner-tr { top: 12px; right: 12px; border-top: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); }
+.corner-bl { bottom: 12px; left: 12px; border-bottom: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); }
+.corner-br { bottom: 12px; right: 12px; border-bottom: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); }
 
 .frame-shine {
   position: absolute;
@@ -538,19 +538,19 @@ body.snap-scroll-body {
 
 .person-name {
   font-family: var(--font-sans);
-  font-size: clamp(1.1rem, 1.6vw, 1.45rem);
-  font-weight: 600;
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  font-weight: 700;
   color: #ffffff;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 
 .person-degree {
   font-family: var(--font-sans);
-  font-size: clamp(0.78rem, 1.1vw, 0.95rem);
-  letter-spacing: 2px;
+  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+  letter-spacing: 2.5px;
   color: var(--gold-primary);
-  margin-top: 5px;
-  font-weight: 600;
+  margin-top: 6px;
+  font-weight: 700;
 }
 
 /* ==========================================================================
@@ -1180,14 +1180,14 @@ body.snap-scroll-body {
 }
 
 .rsvp-card {
-  background: rgba(22, 17, 13, 0.88);
-  border: 1px solid rgba(212, 175, 55, 0.38);
+  background: rgba(22, 17, 13, 0.92);
+  border: 1.5px solid rgba(212, 175, 55, 0.42);
   border-radius: 24px;
-  padding: 38px 42px;
+  padding: 38px 40px;
   backdrop-filter: blur(25px);
-  box-shadow: 0 20px 65px rgba(0, 0, 0, 0.92), 0 0 35px rgba(212, 175, 55, 0.18);
+  box-shadow: 0 25px 75px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.22);
   width: 100%;
-  max-width: 920px;
+  max-width: 600px;
   margin: auto;
   z-index: 5;
   position: relative;
@@ -1195,7 +1195,8 @@ body.snap-scroll-body {
 
 @media (max-width: 768px) {
   .rsvp-card {
-    padding: 28px 20px;
+    padding: 28px 18px;
+    max-width: 100%;
   }
 }
 
@@ -1231,24 +1232,11 @@ body.snap-scroll-body {
   color: var(--gold-light);
 }
 
-.rsvp-grid-fields {
+.rsvp-vertical-fields {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-@media (min-width: 768px) {
-  .rsvp-grid-fields {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-  }
-}
-
-.rsvp-col {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  width: 100%;
 }
 
 .form-name-row {
@@ -1262,6 +1250,7 @@ body.snap-scroll-body {
   flex-direction: column;
   gap: 6px;
   text-align: left;
+  width: 100%;
 }
 
 .form-group label {
@@ -1310,6 +1299,7 @@ body.snap-scroll-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+  width: 100%;
 }
 
 .radio-pill {
@@ -1345,7 +1335,8 @@ body.snap-scroll-body {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 140px;
+  width: 100%;
+  max-width: 160px;
   background: rgba(10, 8, 6, 0.88);
   border: 1px solid rgba(212, 175, 55, 0.32);
   border-radius: 10px;
@@ -1357,8 +1348,8 @@ body.snap-scroll-body {
   border: none;
   color: var(--gold-primary);
   font-size: 1.15rem;
-  width: 42px;
-  height: 40px;
+  width: 48px;
+  height: 42px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1371,12 +1362,12 @@ body.snap-scroll-body {
 }
 
 .number-counter input {
-  width: 50px;
+  width: 60px;
   border: none;
   background: transparent;
   text-align: center;
   font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #ffffff;
   outline: none;
@@ -1386,6 +1377,7 @@ body.snap-scroll-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+  width: 100%;
 }
 
 .diet-option {
@@ -1417,17 +1409,15 @@ body.snap-scroll-body {
 }
 
 .submit-rsvp-btn {
-  margin-top: 18px;
+  margin-top: 8px;
   width: 100%;
-  max-width: 360px;
-  align-self: center;
   background: var(--gold-gradient);
   border: none;
   border-radius: 35px;
-  padding: 13px 28px;
+  padding: 14px 28px;
   color: #1a130c;
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -2170,44 +2160,86 @@ body.intro-active {
     margin: auto !important;
   }
 
-  /* 4. Section 2: Lets Celebrate Mobile */
+  /* 4. Section 2: Lets Celebrate Mobile (HD Sharp Background & High Contrast Typography) */
   .celebrate-fullscreen-bg {
     height: auto !important;
     min-height: 100vh !important;
-    padding: 80px 20px 60px !important;
+    background-image: url('assets/images/disco_banner_mobile.jpg') !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    padding: 90px 16px 60px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
   }
+  .celebrate-overlay-gradient {
+    background: radial-gradient(circle at 50% 30%, rgba(10, 8, 6, 0.2) 0%, rgba(10, 8, 6, 0.75) 75%, rgba(6, 4, 3, 0.92) 100%) !important;
+  }
   .celebrate-inner-content {
-    max-width: 95% !important;
+    max-width: 94% !important;
     text-align: center !important;
-  }
-  .celebrate-title {
-    font-size: clamp(2.5rem, 11vw, 4rem) !important;
-  }
-  .celebrate-desc {
-    font-size: clamp(0.95rem, 3.5vw, 1.15rem) !important;
-    line-height: 1.65 !important;
+    background: rgba(22, 16, 11, 0.88) !important;
+    border: 1.5px solid rgba(212, 175, 55, 0.5) !important;
+    border-radius: 22px !important;
+    padding: 34px 20px 30px !important;
+    backdrop-filter: blur(16px) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.25) !important;
     margin: auto !important;
   }
+  .celebrate-eyebrow {
+    color: var(--gold-light) !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 3.5px !important;
+    font-weight: 700 !important;
+    margin-bottom: 6px !important;
+  }
+  .celebrate-title {
+    font-size: clamp(2.6rem, 11vw, 3.8rem) !important;
+    color: #ffffff !important;
+    background: var(--gold-text-grad) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8)) !important;
+    margin-bottom: 12px !important;
+  }
+  .celebrate-divider {
+    background: var(--gold-gradient) !important;
+    margin: 12px auto 16px !important;
+    width: 70px !important;
+  }
+  .celebrate-desc {
+    font-size: clamp(0.96rem, 3.8vw, 1.15rem) !important;
+    line-height: 1.7 !important;
+    color: #eedecb !important;
+    margin: auto !important;
+  }
+  .celebrate-desc strong {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+  }
+  .gold-highlight {
+    color: var(--gold-light) !important;
+    font-weight: 800 !important;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.7) !important;
+  }
 
-  /* 5. Section 3: Two Hearts Photo Cards Side-by-Side */
+  /* 5. Section 3: Two Hearts Photo Cards Side-by-Side (Prominent & Large) */
   .section-couple-showcase {
     padding: 60px 14px 40px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
+    min-height: 100vh !important;
   }
   .section-title-wrap {
-    margin-bottom: 14px !important;
+    margin-bottom: 16px !important;
   }
   .title-white {
-    font-size: 1.7rem !important;
+    font-size: clamp(1.8rem, 6vw, 2.3rem) !important;
   }
   .title-gold {
-    font-size: 2.1rem !important;
+    font-size: clamp(2.3rem, 7.8vw, 3rem) !important;
     margin-top: -6px !important;
   }
   .photo-frames-row {
@@ -2215,10 +2247,10 @@ body.intro-active {
     flex-direction: row !important;
     justify-content: center !important;
     align-items: stretch !important;
-    gap: 12px !important;
+    gap: 16px !important;
     width: 100% !important;
-    max-width: 440px !important;
-    margin: 12px auto 0 !important;
+    max-width: 520px !important;
+    margin: 10px auto 0 !important;
     padding: 0 4px !important;
   }
   .photo-card {
@@ -2228,19 +2260,27 @@ body.intro-active {
   }
   .photo-frame-inner {
     width: 100% !important;
-    aspect-ratio: 3 / 4 !important;
+    aspect-ratio: 3.8 / 5 !important;
     height: auto !important;
-    max-height: 230px !important;
-    border-radius: 12px !important;
+    min-height: 230px !important;
+    max-height: 330px !important;
+    border-radius: 14px !important;
+    border: 2px solid var(--gold-primary) !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.95), 0 0 25px rgba(212, 175, 55, 0.4) !important;
   }
   .photo-caption {
-    margin-top: 8px !important;
+    margin-top: 10px !important;
   }
   .person-name {
-    font-size: clamp(0.88rem, 3.6vw, 1.08rem) !important;
+    font-size: clamp(1.08rem, 4.4vw, 1.35rem) !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
   }
   .person-degree {
-    font-size: 0.72rem !important;
+    font-size: clamp(0.78rem, 3.2vw, 0.92rem) !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    margin-top: 4px !important;
   }
 
   /* 6. Section 4: Date & Venue HD Mobile */
@@ -2372,7 +2412,7 @@ body.intro-active {
     padding: 4px 12px !important;
   }
 
-  /* 9. Section 7: Modern RSVP Mobile */
+  /* 9. Section 7: Modern RSVP Mobile (Vertical Layout & Full-Width Button) */
   .section-rsvp {
     height: auto !important;
     min-height: 100vh !important;
@@ -2380,20 +2420,21 @@ body.intro-active {
     justify-content: center !important;
   }
   .rsvp-card {
-    padding: 26px 16px !important;
-    border-radius: 20px !important;
+    padding: 28px 16px !important;
+    border-radius: 22px !important;
     width: 100% !important;
     max-width: 100% !important;
+  }
+  .rsvp-vertical-fields {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
   }
   .form-name-row {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 10px !important;
-  }
-  .rsvp-grid-fields {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
   }
   .form-group input,
   .form-group select,
@@ -2404,6 +2445,13 @@ body.intro-active {
   .dietary-pills, .attendance-options {
     grid-template-columns: 1fr 1fr !important;
     gap: 8px !important;
+  }
+  .submit-rsvp-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 15px 20px !important;
+    font-size: 0.95rem !important;
+    margin-top: 6px !important;
   }
 
   /* Floating Audio Button */
