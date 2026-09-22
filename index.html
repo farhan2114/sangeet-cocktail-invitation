@@ -18,115 +18,14 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="snap-scroll-body intro-active">
+<body class="snap-scroll-body">
 
-  <!-- ================= FIXED FIRST PAGE: SCRAMBLED PHOTOS WITH CENTRAL INVITATION CARD ================= -->
-  <div class="intro-scattered-overlay" id="introScatteredPage">
-    <div class="scattered-floor-bg"></div>
-    <div class="scattered-spotlight"></div>
-
-    <!-- Ambient Floating Light Bokeh Orbs in Background -->
-    <div class="intro-bokeh-orb orb-1" aria-hidden="true"></div>
-    <div class="intro-bokeh-orb orb-2" aria-hidden="true"></div>
-    <div class="intro-bokeh-orb orb-3" aria-hidden="true"></div>
-    <div class="intro-bokeh-orb orb-4" aria-hidden="true"></div>
-
-    <!-- Sparkly Star Decorations across the Intro Stage -->
-    <div class="intro-sparkle-deco spk-intro-tl" aria-hidden="true">
-      <img src="assets/images/sparkle_star_large.png" alt="" class="anim-twinkle">
-    </div>
-    <div class="intro-sparkle-deco spk-intro-tr" aria-hidden="true">
-      <img src="assets/images/sparkle_star_med1.png" alt="" class="anim-twinkle-delay1">
-    </div>
-    <div class="intro-sparkle-deco spk-intro-bl" aria-hidden="true">
-      <img src="assets/images/sparkle_star_med2.png" alt="" class="anim-twinkle-delay2">
-    </div>
-    <div class="intro-sparkle-deco spk-intro-br" aria-hidden="true">
-      <img src="assets/images/sparkle_star_large.png" alt="" class="anim-twinkle">
-    </div>
-    <div class="intro-sparkle-deco spk-intro-mid-l" aria-hidden="true">
-      <img src="assets/images/sparkle_star_med3.png" alt="" class="anim-twinkle-delay1">
-    </div>
-    <div class="intro-sparkle-deco spk-intro-mid-r" aria-hidden="true">
-      <img src="assets/images/sparkle_star_med2.png" alt="" class="anim-twinkle-delay2">
-    </div>
-
-    <!-- The Scrambled Photo Pile Thrown on the Floor -->
-    <div class="scattered-photos-stage">
-
-      <!-- Photo 1: Pyro Fireworks Entrance (Top-Left) -->
-      <div class="scatter-photo-item photo-rot-1">
-        <div class="photo-polaroid">
-          <img src="assets/images/scatter_pyro_entrance.jpg" alt="Fireworks Celebration">
-          <div class="polaroid-label">Celebration Night ✨</div>
-        </div>
-      </div>
-
-      <!-- Photo 2: Celebration Moments (Top-Right) -->
-      <div class="scatter-photo-item photo-rot-2">
-        <div class="photo-polaroid">
-          <img src="assets/images/couple_original.jpg" alt="Celebration Moments">
-          <div class="polaroid-label">Together Forever 💑</div>
-        </div>
-      </div>
-
-      <!-- Photo 3: Bride & Friends Sangeet Dance (Bottom-Left) -->
-      <div class="scatter-photo-item photo-rot-3">
-        <div class="photo-polaroid">
-          <img src="assets/images/scatter_sangeet_dance.jpg" alt="Dancing the Night Away">
-          <div class="polaroid-label">Sangeet Beats 💃</div>
-        </div>
-      </div>
-
-      <!-- Photo 4: Outdoor Fairy-Lit Venue (Bottom-Right) -->
-      <div class="scatter-photo-item photo-rot-4">
-        <div class="photo-polaroid">
-          <img src="assets/images/scatter_venue_lanterns.jpg" alt="Fairytale Venue">
-          <div class="polaroid-label">Royal Lawns 🏮</div>
-        </div>
-      </div>
-
-      <!-- THE INVITATION CARD SITTING IN THE MIDDLE (CLEAN, SIMPLE & ELEGANT) -->
-      <div class="central-invitation-card" id="centralInvitationCard" onclick="openMainWebsite()" title="Click card to open website">
-        <div class="card-aura-glow"></div>
-        <div class="card-gold-frame-outer">
-          <div class="card-gold-frame-inner">
-            <!-- Corner Ornaments -->
-            <div class="card-corner corner-tl"></div>
-            <div class="card-corner corner-tr"></div>
-            <div class="card-corner corner-bl"></div>
-            <div class="card-corner corner-br"></div>
-            <div class="card-shine-bar"></div>
-
-            <div class="card-body">
-              <div class="card-crest-top">✦</div>
-              <h1 class="card-main-title">Sangeet &amp; Cocktails</h1>
-              <div class="card-gold-rule">
-                <span class="rule-line"></span>
-                <span class="rule-star">✦</span>
-                <span class="rule-line"></span>
-              </div>
-              <h2 class="card-couple-heading">Nikhil &amp; Sreeja</h2>
-              <p class="meta-date-simple">November 22, 2026 &bull; Hyderabad</p>
-
-              <div class="card-click-cta">
-                <span class="cta-text">Enter Celebration</span>
-                <span class="cta-sparkle">✨</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Ambient Gold Dust Floating Canvas -->
+  <!-- Ambient Sky-Blue, Purple & Gold Floating Dust Particles -->
   <canvas id="particles-canvas"></canvas>
 
   <!-- Floating Audio / Music Player Toggle -->
   <div class="audio-control-wrapper" id="audioToggle" title="Toggle Background Music">
-    <button class="audio-btn" aria-label="Toggle Music" id="musicBtn">
+    <button class="audio-btn" aria-label="Toggle Music" id="musicBtn" onclick="toggleAudio()">
       <div class="equalizer" id="equalizer">
         <span class="bar bar1"></span>
         <span class="bar bar2"></span>
@@ -140,43 +39,74 @@
   <!-- Main Website Container (Immersive Full-Screen Snap Sections) -->
   <main class="fullpage-wrapper" id="fullpage">
 
-    <!-- ================= SECTION 1: HERO SECTION ================= -->
-    <section class="section section-hero" id="hero" data-index="0">
+    <!-- ================= SECTION 1: HERO SECTION (NAVY LANTERNS & LUXURY GOLD FILIGREE CARD) ================= -->
+    <section class="section section-hero-lanterns" id="hero" data-index="0">
+      <div class="hero-lanterns-bg" style="background-image: url('assets/images/hero_lanterns_bg.png');">
+        <div class="hero-atmosphere-gradient"></div>
 
-      <!-- Sparkly Star Decorations in Empty Spaces -->
-      <div class="sparkle-deco spk-hero-tl" aria-hidden="true">
-        <img src="assets/images/sparkle_star_large.png" alt="" class="anim-twinkle">
-      </div>
-      <div class="sparkle-deco spk-hero-tr" aria-hidden="true">
-        <img src="assets/images/sparkle_star_med1.png" alt="" class="anim-twinkle-delay1">
-      </div>
-      <div class="sparkle-deco spk-hero-br" aria-hidden="true">
-        <img src="assets/images/sparkle_star_med2.png" alt="" class="anim-twinkle-delay2">
-      </div>
-
-      <div class="hero-top-banner" data-reveal="fade-down">
-        <p class="invite-header-sub">You're invited to</p>
-        <h1 class="invite-header-title">Sangeet &amp; Cocktail</h1>
-        <div class="title-gold-divider"></div>
-      </div>
-
-      <div class="hero-main-container">
-        <!-- Couple Cartoon Illustration (Big & Prominent) -->
-        <div class="couple-illustration-wrapper" data-reveal="fade-right">
-          <div class="illustration-aura"></div>
-          <img src="assets/images/couple_transparent.png" 
-               alt="Nikhil &amp; Sreeja" 
-               class="couple-img">
+        <!-- Twinkling Starlight & Sparkle Accents -->
+        <div class="sparkle-deco spk-hero-tl" aria-hidden="true">
+          <img src="assets/images/sparkle_star_large.png" alt="" class="anim-twinkle">
+        </div>
+        <div class="sparkle-deco spk-hero-tr" aria-hidden="true">
+          <img src="assets/images/sparkle_star_med1.png" alt="" class="anim-twinkle-delay1">
+        </div>
+        <div class="sparkle-deco spk-hero-bl" aria-hidden="true">
+          <img src="assets/images/sparkle_star_med2.png" alt="" class="anim-twinkle-delay2">
+        </div>
+        <div class="sparkle-deco spk-hero-br" aria-hidden="true">
+          <img src="assets/images/sparkle_star_large.png" alt="" class="anim-twinkle">
         </div>
 
-        <!-- Names & Subtitle (Right) -->
-        <div class="couple-names-wrapper" data-reveal="fade-left">
-          <div class="script-name nikhil-name">Nikhil Reddy</div>
-          <div class="script-ampersand">&amp;</div>
-          <div class="script-name sneha-name">Sreeja Reddy</div>
-          <div class="names-separator"></div>
-          <p class="hero-subtitle">A Night of Music, Dance &amp; Celebration</p>
+        <!-- Central Luxury Gold Filigree Card (Exact Match to Mockup) -->
+        <div class="lanterns-invitation-card" data-reveal="zoom-in">
+          <div class="card-aura-glow"></div>
+          
+          <div class="filigree-frame-border">
+            <!-- Top Floral Crest Ornament -->
+            <div class="filigree-crest-top">
+              <svg width="42" height="28" viewBox="0 0 42 28" fill="var(--gold-primary)">
+                <path d="M21 0 C19 7 14 12 8 14 C14 16 19 21 21 28 C23 21 28 16 34 14 C28 12 23 7 21 0 Z M21 9 C20 13 17 15 14 16 C17 17 20 19 21 23 C22 19 25 17 28 16 C25 15 22 13 21 9 Z"/>
+              </svg>
+            </div>
+
+            <div class="filigree-inner-card">
+              <!-- Corner Flourishes -->
+              <div class="flourish flourish-tl"></div>
+              <div class="flourish flourish-tr"></div>
+              <div class="flourish flourish-bl"></div>
+              <div class="flourish flourish-br"></div>
+              <div class="card-shimmer-sweep"></div>
+
+              <div class="lanterns-card-content">
+                <h1 class="lanterns-card-title">Sangeet &amp;<br>Cocktails</h1>
+
+                <div class="lanterns-ornament-divider">
+                  <span class="orn-line"></span>
+                  <span class="orn-motif">❖</span>
+                  <span class="orn-line"></span>
+                </div>
+
+                <h2 class="lanterns-couple-name">Nikhil &amp; Sreeja</h2>
+
+                <p class="lanterns-meta-text">NOVEMBER 22, 2026 &bull; HYDERABAD</p>
+
+                <a href="#celebrate" class="enter-celebration-pill-btn" onclick="scrollToCelebrate(event)">
+                  <span>Enter Celebration</span>
+                  <span class="pill-arrow">&rarr;</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Bottom Floral Crest Ornament -->
+            <div class="filigree-crest-bottom">
+              <svg width="42" height="28" viewBox="0 0 42 28" fill="var(--gold-primary)" transform="rotate(180 21 14)">
+                <path d="M21 0 C19 7 14 12 8 14 C14 16 19 21 21 28 C23 21 28 16 34 14 C28 12 23 7 21 0 Z M21 9 C20 13 17 15 14 16 C17 17 20 19 21 23 C22 19 25 17 28 16 C25 15 22 13 21 9 Z"/>
+              </svg>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -592,6 +522,44 @@
         </div>
       </div>
     </section>
+
+    <!-- ================= SECTION 8: OUR FOREVER STARTS HERE (FOOTER BANNER) ================= -->
+    <footer class="section section-forever-footer" id="forever-footer" data-index="7">
+      <div class="footer-stage-container" data-reveal="fade-up">
+        
+        <!-- Luxury Floating Ribbon Banner Matching Mockup -->
+        <div class="forever-ribbon-card">
+          <!-- Left: Dancing Couple in Royal Navy -->
+          <div class="forever-couple-wrapper">
+            <img src="assets/images/couple_navy_dancing.png" alt="Sreeja &amp; Nikhil" class="forever-dancing-img">
+          </div>
+
+          <!-- Right: Typography & Message -->
+          <div class="forever-text-content">
+            <h3 class="forever-cursive-title">Our forever</h3>
+            <h2 class="forever-serif-sub">STARTS HERE.</h2>
+            
+            <div class="forever-heart-sep">
+              <span class="f-sep-line"></span>
+              <span class="f-sep-heart">♡</span>
+              <span class="f-sep-line"></span>
+            </div>
+
+            <p class="forever-appreciation">Thank you for being a part of our beautiful journey.</p>
+
+            <h4 class="forever-couple-names">SREEJA &amp; NIKHIL</h4>
+
+            <div class="forever-lotus-mark">
+              <svg width="34" height="24" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 2 C15 8 9 13 3 15 C9 17 15 19 17 22 C19 19 25 17 31 15 C25 13 19 8 17 2 Z" stroke="var(--gold-primary)" stroke-width="1.2"/>
+                <path d="M17 7 C16 11 12 14 8 16 C12 17 16 18 17 20 C18 18 22 17 26 16 C22 14 18 11 17 7 Z" stroke="var(--gold-primary)" stroke-width="1.2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </footer>
 
   </main> <!-- /.fullpage-wrapper -->
 

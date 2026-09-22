@@ -14,48 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   0. FIXED FIRST PAGE INVITATION REVEAL CONTROLLER
+   0. CELEBRATION SCROLL & AUDIO TRIGGER
    ========================================================================== */
-let introOpened = false;
-
-function openMainWebsite() {
-  if (introOpened) return;
-  introOpened = true;
-
-  const overlay = document.getElementById('introScatteredPage');
-  if (!overlay) return;
-
-  // 1. Mark overlay opened to trigger card lift & photo disperse animation
-  overlay.classList.add('opened');
-  document.body.classList.remove('intro-active');
-
-  // 2. Start celebration background music automatically
+function scrollToCelebrate(e) {
+  if (e) e.preventDefault();
+  const target = document.getElementById('celebrate');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
   if (!isAudioPlaying) {
     toggleAudio();
   }
-
-  // 3. Fire celebratory golden confetti & sparkle shower
   if (typeof confetti === 'function') {
     confetti({
-      particleCount: 85,
-      spread: 120,
-      origin: { y: 0.5, x: 0.5 },
-      colors: ['#ffe599', '#d4af37', '#ffffff', '#ffb300', '#ffd700'],
-      ticks: 260,
+      particleCount: 75,
+      spread: 110,
+      origin: { y: 0.55, x: 0.5 },
+      colors: ['#38b6ff', '#9b51e0', '#d4af37', '#ffffff', '#7928ca'],
+      ticks: 240,
       scalar: 1.15
     });
   }
-
-  // 4. Reveal hero section elements
-  setTimeout(() => {
-    const heroElements = document.querySelectorAll('#hero [data-reveal]');
-    heroElements.forEach(el => el.classList.add('revealed'));
-  }, 400);
-
-  // 5. Hide overlay completely after animation
-  setTimeout(() => {
-    overlay.style.display = 'none';
-  }, 1200);
 }
 
 /* ==========================================================================
@@ -65,12 +44,6 @@ function initKeyboardNav() {
   const sections = document.querySelectorAll('.section');
 
   window.addEventListener('keydown', (e) => {
-    if (!introOpened && (e.key === ' ' || e.key === 'Enter')) {
-      e.preventDefault();
-      openMainWebsite();
-      return;
-    }
-
     // Don't intercept when user is typing in form inputs
     const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
     if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') return;
@@ -103,7 +76,7 @@ function initKeyboardNav() {
 }
 
 /* ==========================================================================
-   2. AMBIENT GOLD DUST PARTICLES
+   2. AMBIENT CELESTIAL PARTICLES (SKY BLUE, PURPLE & GOLD DUST)
    ========================================================================== */
 function initParticles() {
   const canvas = document.getElementById('particles-canvas');
@@ -118,7 +91,14 @@ function initParticles() {
     height = canvas.height = window.innerHeight;
   });
 
-  const particleCount = 55;
+  const particleColors = [
+    { rgb: '212, 175, 55', glow: 'rgba(255, 235, 150, 0.8)' },   // Warm Gold
+    { rgb: '56, 182, 255', glow: 'rgba(56, 182, 255, 0.9)' },    // Sky Blue
+    { rgb: '155, 81, 224', glow: 'rgba(195, 125, 255, 0.85)' },  // Purple Glow
+    { rgb: '255, 255, 255', glow: 'rgba(255, 255, 255, 0.9)' }   // Diamond Starlight
+  ];
+
+  const particleCount = 60;
   const particles = [];
 
   class Particle {
@@ -129,12 +109,13 @@ function initParticles() {
     reset() {
       this.x = Math.random() * width;
       this.y = Math.random() * height;
-      this.size = Math.random() * 2.4 + 0.6;
-      this.speedY = -(Math.random() * 0.5 + 0.15);
-      this.speedX = (Math.random() - 0.5) * 0.35;
+      this.size = Math.random() * 2.2 + 0.6;
+      this.speedY = -(Math.random() * 0.45 + 0.12);
+      this.speedX = (Math.random() - 0.5) * 0.3;
       this.alpha = Math.random() * 0.65 + 0.2;
       this.pulseSpeed = Math.random() * 0.02 + 0.008;
       this.pulseDirection = 1;
+      this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
     }
 
     update() {
@@ -154,9 +135,9 @@ function initParticles() {
       ctx.save();
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(212, 175, 55, ${this.alpha})`;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = 'rgba(245, 228, 168, 0.7)';
+      ctx.fillStyle = `rgba(${this.color.rgb}, ${this.alpha})`;
+      ctx.shadowBlur = 9;
+      ctx.shadowColor = this.color.glow;
       ctx.fill();
       ctx.restore();
     }
