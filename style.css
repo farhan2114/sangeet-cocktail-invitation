@@ -1602,19 +1602,19 @@ body.snap-scroll-body {
 }
 
 /* ==========================================================================
-   SECTION 8: OUR FOREVER STARTS HERE (ZERO-GAP HIGH-RES VECTOR FOOTER)
-   Full-Bleed Ribbon Wave, Crisp Typography & Prominent Dancing Couple
+   SECTION 8: OUR FOREVER STARTS HERE (FULL-SCREEN HD BANNER — ZERO GAPS)
+   Image fills entire viewport via object-fit: cover, left-anchored
    ========================================================================== */
 .section-forever-footer {
-  background: var(--bg-primary);
+  background: #0d1733;
   padding: 0;
   margin: 0;
   width: 100vw;
   height: 100vh;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: stretch;
   position: relative;
   overflow: hidden;
 }
@@ -1623,7 +1623,7 @@ body.snap-scroll-body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
 }
 
 .footer-petal {
@@ -1634,170 +1634,41 @@ body.snap-scroll-body {
   animation: petalFloat 6s infinite alternate ease-in-out;
 }
 
-.petal-1 { top: 12%; left: 8%; animation-delay: 0s; }
-.petal-2 { top: 18%; right: 12%; animation-delay: 1.5s; }
-.petal-3 { bottom: 15%; left: 14%; animation-delay: 2.8s; }
-.petal-4 { bottom: 12%; right: 18%; animation-delay: 0.8s; }
-.petal-5 { bottom: 8%; left: 45%; animation-delay: 2.2s; }
+.petal-1 { top: 10%; left: 6%; animation-delay: 0s; }
+.petal-2 { top: 14%; right: 8%; animation-delay: 1.5s; }
+.petal-3 { bottom: 12%; left: 12%; animation-delay: 2.8s; }
+.petal-4 { bottom: 8%; right: 14%; animation-delay: 0.8s; }
+.petal-5 { bottom: 5%; left: 48%; animation-delay: 2.2s; }
 
 @keyframes petalFloat {
   0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
   100% { transform: translateY(-16px) rotate(20deg); opacity: 0.95; }
 }
 
-.footer-wave-stage {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-}
-
-.footer-cream-ribbon {
-  width: 100%;
-  height: 72vh;
-  min-height: 460px;
-  max-height: 560px;
-  background: #fdfaf4;
-  background: linear-gradient(135deg, #fefdfb 0%, #faf5ec 50%, #f5efe2 100%);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.7);
-  clip-path: polygon(0 6%, 100% 0%, 100% 94%, 0% 100%);
-}
-
-.ribbon-gold-arcs {
+/* Full-screen wrapper — stretches to fill entire footer section */
+.footer-banner-wrapper {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
 }
 
-.ribbon-inner-content {
+/* Banner image — covers the full viewport, anchored left, zero quality loss */
+.footer-banner-exact-img {
   width: 100%;
-  max-width: 1350px;
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 50px;
-  position: relative;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+  transition: transform 0.5s ease;
 }
 
-.footer-couple-figure {
-  position: absolute;
-  left: 40px;
-  bottom: -25px;
-  height: 120%;
-  max-height: 580px;
-  display: flex;
-  align-items: flex-end;
-  z-index: 10;
-  pointer-events: none;
+.footer-banner-wrapper:hover .footer-banner-exact-img {
+  transform: scale(1.008);
 }
 
-.footer-couple-img {
-  height: 100%;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
-  transition: transform 0.4s ease;
-}
-
-.footer-cream-ribbon:hover .footer-couple-img {
-  transform: scale(1.02) rotate(-0.5deg);
-}
-
-.footer-typography-block {
-  margin-left: auto;
-  width: 55%;
-  max-width: 640px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-right: 30px;
-}
-
-.footer-script-title {
-  font-family: var(--font-alex);
-  font-size: clamp(3.4rem, 5.8vw, 5.5rem);
-  color: #c59828;
-  line-height: 1;
-  margin-bottom: 2px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.footer-serif-headline {
-  font-family: var(--font-serif);
-  font-size: clamp(1.9rem, 3.6vw, 3.2rem);
-  font-weight: 800;
-  color: #111936;
-  letter-spacing: 3px;
-  line-height: 1.1;
-  margin-bottom: 14px;
-}
-
-.footer-gold-divider-heart {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  width: 200px;
-  margin: 4px auto 16px;
-}
-
-.heart-line {
-  flex: 1;
-  height: 1.5px;
-  background: linear-gradient(to right, transparent, #c59828, transparent);
-}
-
-.heart-icon {
-  color: #c59828;
-  font-size: 1.1rem;
-}
-
-.footer-gratitude-text {
-  font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 1.35vw, 1.2rem);
-  color: #334155;
-  line-height: 1.65;
-  max-width: 460px;
-  margin-bottom: 20px;
-  font-weight: 500;
-}
-
-.footer-couple-names-wrap {
-  font-family: var(--font-cinzel);
-  font-size: clamp(1.2rem, 1.9vw, 1.65rem);
-  font-weight: 800;
-  letter-spacing: 5px;
-  color: #111936;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin-bottom: 12px;
-}
-
-.c-amp {
-  font-family: var(--font-alex);
-  font-size: 1.8rem;
-  color: #c59828;
-  font-weight: normal;
-}
-
-.footer-lotus-ornament {
-  margin-top: 2px;
-}
 
 /* ==========================================================================
    SPARKLE DECORATIONS IN EMPTY SPACES THROUGHOUT THE WEBSITE
