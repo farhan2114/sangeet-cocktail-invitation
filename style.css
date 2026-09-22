@@ -220,21 +220,21 @@ body.snap-scroll-body {
   overflow: hidden;
 }
 
-/* Authentic Luxury Hero Card — Fully Opaque with Golden Floral Rose Vine Border */
+/* Authentic Luxury Hero Card — Fully Opaque with Royal Gold Baroque Frame */
 .luxury-hero-card {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 490px;
-  min-height: 480px;
-  border-radius: 26px;
-  /* Fully opaque dark navy -> purple gradient */
+  max-width: 480px;
+  min-height: 490px;
+  border-radius: 20px;
+  /* Fully opaque dark navy to deep purple gradient */
   background: linear-gradient(170deg, #0b1128 0%, #0e1740 35%, #1a1245 65%, #2d1033 100%);
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.92), 0 0 45px rgba(212, 175, 55, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px 38px 44px 38px;
+  padding: 56px 42px 48px 42px;
   animation: floatCardHero 5s ease-in-out infinite alternate;
   isolation: isolate;
 }
@@ -246,9 +246,9 @@ body.snap-scroll-body {
 
 .card-ambient-aura {
   position: absolute;
-  inset: -20px;
+  inset: -18px;
   background: radial-gradient(circle, rgba(212, 175, 55, 0.26) 0%, rgba(56, 182, 255, 0.12) 50%, transparent 75%);
-  border-radius: 36px;
+  border-radius: 30px;
   pointer-events: none;
   animation: auraPulse 4s infinite alternate ease-in-out;
   z-index: -1;
@@ -259,22 +259,22 @@ body.snap-scroll-body {
   100% { transform: scale(1.06); opacity: 1; }
 }
 
-/* Ornate Golden Floral Rose Vine Border Frame (Attached Reference Image) */
-.card-floral-border-frame {
+/* Ornate Royal Gold Baroque Frame (Exact Attached Reference) */
+.card-royal-frame {
   position: absolute;
-  inset: -8px;
-  width: calc(100% + 16px);
-  height: calc(100% + 16px);
+  inset: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
   pointer-events: none;
   z-index: 3;
 }
 
-.card-floral-border-img {
+.card-royal-frame-img {
   width: 100%;
   height: 100%;
   object-fit: fill;
   display: block;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 6px rgba(212, 175, 55, 0.25));
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
 }
 
 .card-inner-body {
@@ -1029,6 +1029,7 @@ body.snap-scroll-body {
   font-weight: 800;
   letter-spacing: 0.8px;
   cursor: pointer;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1810,9 +1811,9 @@ body.snap-scroll-body {
     height: auto !important;
   }
   .luxury-hero-card {
-    max-width: 340px !important;
-    min-height: 420px !important;
-    padding: 26px 16px 22px 16px !important;
+    max-width: 350px !important;
+    min-height: 440px !important;
+    padding: 44px 26px 36px 26px !important;
   }
   .hero-card-title .title-serif {
     font-size: clamp(1.85rem, 6.6vw, 2.25rem) !important;
@@ -1828,9 +1829,6 @@ body.snap-scroll-body {
   .hero-gold-pill-btn {
     padding: 9px 22px !important;
     font-size: 0.8rem !important;
-  }
-  .btn-track-pill {
-    inset: -3px -10px !important;
   }
 
   /* 3. Section 2: Lets Celebrate Mobile */

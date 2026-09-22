@@ -13,9 +13,9 @@ const EVENT_CONFIG = {
   eventDescription: "Celebrate the Sangeet & Cocktails night with Nikhil & Sreeja! An evening of music, dance, and celebration.",
   
   // [EDIT: Date & Time in YYYYMMDDTHHMMSS format]
-  // Example: 20261122T190000 = November 22, 2026 at 7:00 PM (19:00)
-  startDateTime: "20261122T190000",
-  endDateTime: "20261123T010000",
+  // Example: 20261121T190000 = November 21, 2026 at 7:00 PM (19:00)
+  startDateTime: "20261121T190000",
+  endDateTime: "20261122T010000",
   
   // [EDIT: Venue Name, Address & Google Maps Direction Link]
   venueName: "Frisco Hall Event Center",
@@ -34,6 +34,20 @@ function addToGoogleCalendar() {
 /**
  * Opens Google Maps directions to the venue
  */
+function initCalendarAndMapButtons() {
+  const gcalBtn = document.getElementById('addGCalBtn');
+  const mapBtn = document.getElementById('openMapBtn');
+  
+  if (gcalBtn) {
+    const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_CONFIG.eventName)}&dates=${EVENT_CONFIG.startDateTime}/${EVENT_CONFIG.endDateTime}&details=${encodeURIComponent(EVENT_CONFIG.eventDescription)}&location=${encodeURIComponent(EVENT_CONFIG.venueAddress)}`;
+    gcalBtn.href = gcalUrl;
+  }
+  
+  if (mapBtn) {
+    mapBtn.href = EVENT_CONFIG.googleMapsUrl;
+  }
+}
+
 function openLocationMap() {
   window.open(EVENT_CONFIG.googleMapsUrl, '_blank');
 }
@@ -46,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPills();
   initEventsCarousel();
   checkSavedRsvp();
+  initCalendarAndMapButtons();
 });
 
 /* ==========================================================================
@@ -254,6 +269,20 @@ function downloadIcsFile() {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+function initCalendarAndMapButtons() {
+  const gcalBtn = document.getElementById('addGCalBtn');
+  const mapBtn = document.getElementById('openMapBtn');
+  
+  if (gcalBtn) {
+    const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_CONFIG.eventName)}&dates=${EVENT_CONFIG.startDateTime}/${EVENT_CONFIG.endDateTime}&details=${encodeURIComponent(EVENT_CONFIG.eventDescription)}&location=${encodeURIComponent(EVENT_CONFIG.venueAddress)}`;
+    gcalBtn.href = gcalUrl;
+  }
+  
+  if (mapBtn) {
+    mapBtn.href = EVENT_CONFIG.googleMapsUrl;
+  }
 }
 
 function openLocationMap() {
