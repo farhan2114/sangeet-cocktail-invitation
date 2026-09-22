@@ -1775,7 +1775,7 @@ body.snap-scroll-body {
 /* ==========================================================================
    COMPREHENSIVE MOBILE & TABLET RESPONSIVENESS OVERHAUL
    ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   /* 1. Remove forced snap-scroll locking on mobile for fluid natural scrolling */
   html, body, body.snap-scroll-body, .fullpage-wrapper {
     scroll-snap-type: none !important;
@@ -2141,20 +2141,34 @@ body.snap-scroll-body {
 }
 
 @media (max-width: 420px) {
+  .luxury-hero-card {
+    max-width: 315px !important;
+    min-height: 410px !important;
+    padding: 40px 18px 30px 18px !important;
+  }
+  .hero-card-title .title-serif {
+    font-size: 1.7rem !important;
+  }
+  .hero-card-couple {
+    font-size: 2.15rem !important;
+  }
+  .hero-card-meta {
+    font-size: 0.62rem !important;
+    letter-spacing: 1.2px !important;
+  }
+  .hero-gold-pill-btn {
+    padding: 8px 20px !important;
+    font-size: 0.78rem !important;
+  }
   .form-name-row {
     grid-template-columns: 1fr !important;
     gap: 12px !important;
   }
-  .lanterns-invitation-card {
-    max-width: 300px !important;
+  .attendance-options {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
   }
-  .filigree-inner-card {
-    padding: 18px 10px 14px !important;
-  }
-  .lanterns-card-title {
-    font-size: 1.65rem !important;
-  }
-  .lanterns-couple-name {
-    font-size: 1.85rem !important;
+  .dietary-pills {
+    grid-template-columns: 1fr 1fr !important;
   }
 }

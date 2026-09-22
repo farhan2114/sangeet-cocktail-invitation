@@ -7,6 +7,25 @@
    [EDITABLE CONFIGURATION] EVENT DETAILS, GOOGLE CALENDAR & MAPS
    Edit the values below to easily update the event details everywhere!
    ========================================================================== */
+
+/* ==========================================================================
+   [EDITABLE CONFIGURATION] SUPABASE & GOOGLE SHEETS SYNC
+   Paste your Supabase credentials and/or Google Sheets Webhook URL below!
+   ========================================================================== */
+const SUPABASE_CONFIG = {
+  // 1. Your Supabase Project URL (e.g. "https://xyzcompany.supabase.co")
+  url: "",
+  // 2. Your Supabase Anon Public API Key (starts with "eyJ...")
+  anonKey: "",
+  // 3. The Supabase table name
+  tableName: "rsvps"
+};
+
+const GOOGLE_SHEETS_CONFIG = {
+  // Google Apps Script Web App URL (starts with "https://script.google.com/macros/s/.../exec")
+  webhookUrl: ""
+};
+
 const EVENT_CONFIG = {
   // [EDIT: Event Name & Description]
   eventName: "Sangeet & Cocktails - Nikhil & Sreeja",
@@ -330,9 +349,10 @@ function adjustCount(delta) {
   input.value = val;
 }
 
-function handleRsvpSubmit(event) {
+async function handleRsvpSubmit(event) {
   event.preventDefault();
   const form = document.getElementById('rsvpForm');
+  const submitBtn = document.getElementById('submitRsvpBtn');
   const formData = new FormData(form);
 
   const firstName = (formData.get('firstName') || '').trim();
@@ -340,20 +360,87 @@ function handleRsvpSubmit(event) {
   const fullName = `${firstName} ${lastName}`.trim() || 'Valued Guest';
 
   const rsvpData = {
-    firstName: firstName,
-    lastName: lastName,
-    name: fullName,
+    first_name: firstName,
+    last_name: lastName,
+    full_name: fullName,
     email: (formData.get('guestEmail') || '').trim(),
-    attendance: formData.get('attendance'),
-    guests: formData.get('guestCount') || 1,
+    attendance: formData.get('attendance') || 'Attending',
+    guests: parseInt(formData.get('guestCount')) || 1,
     diet: formData.get('diet') || 'Veg',
     wishes: (formData.get('wishes') || '').trim(),
-    timestamp: new Date().toISOString()
+    submitted_at: new Date().toISOString()
   };
 
+  // Immediate LocalStorage backup so data is never lost
   localStorage.setItem('sangeet_rsvp', JSON.stringify(rsvpData));
+
+  // Visual loading state
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="btn-text">Submitting RSVP...</span> <span class="btn-icon">⏳</span>';
+  }
+
+  // 1. Submit to Supabase Database (if configured)
+  if (SUPABASE_CONFIG.url && SUPABASE_CONFIG.anonKey) {
+    try {
+      await fetch(`${SUPABASE_CONFIG.url}/rest/v1/${SUPABASE_CONFIG.tableName}`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_CONFIG.anonKey,
+          'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          first_name: rsvpData.first_name,
+          last_name: rsvpData.last_name,
+          full_name: rsvpData.full_name,
+          email: rsvpData.email,
+          attendance: rsvpData.attendance,
+          guests: rsvpData.guests,
+          diet: rsvpData.diet,
+          wishes: rsvpData.wishes,
+          created_at: rsvpData.submitted_at
+        })
+      });
+      console.log('✅ RSVP successfully synced to Supabase database!');
+    } catch (err) {
+      console.warn('⚠️ Supabase sync error:', err);
+    }
+  }
+
+  // 2. Submit to Google Sheets (if configured via Apps Script Webhook)
+  if (GOOGLE_SHEETS_CONFIG.webhookUrl) {
+    try {
+      await fetch(GOOGLE_SHEETS_CONFIG.webhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(rsvpData)
+      });
+      console.log('✅ RSVP successfully synced to Google Sheets!');
+    } catch (err) {
+      console.warn('⚠️ Google Sheets sync error:', err);
+    }
+  }
+
+  // Reset button state
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<span class="btn-text">Confirm RSVP</span> <span class="btn-icon">✨</span>';
+  }
+
   triggerConfetti();
-  displayRsvpSuccess(rsvpData);
+  displayRsvpSuccess({
+    name: fullName,
+    email: rsvpData.email,
+    attendance: rsvpData.attendance,
+    guests: rsvpData.guests,
+    diet: rsvpData.diet,
+    wishes: rsvpData.wishes
+  });
 }
 
 function displayRsvpSuccess(data) {
