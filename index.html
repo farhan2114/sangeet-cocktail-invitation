@@ -57,16 +57,93 @@
           <img src="assets/images/sparkle_star_large.png" alt="" class="anim-twinkle">
         </div>
 
-        <!-- Exact Luxury Gold Filigree Card (Exact Match to Mockup) -->
-        <div class="hero-exact-card-container" data-reveal="zoom-in">
-          <div class="hero-card-glow-aura"></div>
-          <div class="hero-card-img-wrapper">
-            <img src="assets/images/hero_card_exact.png" alt="Sangeet &amp; Cocktails | Nikhil &amp; Sreeja" class="hero-exact-card-img">
-            <!-- Active Interactive Clickable Button -->
-            <a href="#celebrate" class="hero-exact-enter-btn" onclick="scrollToCelebrate(event)" aria-label="Enter Celebration">
-              <span class="btn-ripple-glow"></span>
-              <span class="btn-hover-text">Enter Celebration &rarr;</span>
-            </a>
+        <!-- Luxury Gold Filigree Card (Authentic HTML/CSS/SVG Architecture) -->
+        <div class="luxury-hero-card" data-reveal="zoom-in">
+          <div class="card-ambient-aura"></div>
+          
+          <!-- Ornate Filigree Frame SVG Overlay -->
+          <div class="card-filigree-frame">
+            <svg class="filigree-svg-frame" viewBox="0 0 440 540" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <!-- Outer Gold Border -->
+              <rect x="14" y="14" width="412" height="512" rx="18" stroke="url(#goldGrad1)" stroke-width="1.2" stroke-opacity="0.6"/>
+              <!-- Inner Gold Border -->
+              <rect x="22" y="22" width="396" height="496" rx="14" stroke="url(#goldGrad2)" stroke-width="1.2" stroke-opacity="0.9"/>
+              
+              <!-- Corner Flourish Ornaments -->
+              <!-- Top Left -->
+              <path d="M22 42 C22 30 30 22 42 22 C34 28 28 34 22 42 Z" fill="url(#goldGrad1)"/>
+              <circle cx="32" cy="32" r="2.5" fill="#ffeaa7"/>
+              <!-- Top Right -->
+              <path d="M418 42 C418 30 410 22 398 22 C406 28 412 34 418 42 Z" fill="url(#goldGrad1)"/>
+              <circle cx="408" cy="32" r="2.5" fill="#ffeaa7"/>
+              <!-- Bottom Left -->
+              <path d="M22 498 C22 510 30 518 42 518 C34 512 28 506 22 498 Z" fill="url(#goldGrad1)"/>
+              <circle cx="32" cy="508" r="2.5" fill="#ffeaa7"/>
+              <!-- Bottom Right -->
+              <path d="M418 498 C418 510 410 518 398 518 C406 512 412 506 418 498 Z" fill="url(#goldGrad1)"/>
+              <circle cx="408" cy="508" r="2.5" fill="#ffeaa7"/>
+
+              <!-- Top Center Fleur-de-lis Crest -->
+              <g transform="translate(220, 22)">
+                <path d="M0 -18 C-5 -8 -12 -4 -18 0 C-12 4 -5 8 0 18 C5 8 12 4 18 0 C12 -4 5 -8 0 -18 Z" fill="url(#goldGrad1)"/>
+                <circle cx="0" cy="0" r="3.2" fill="#fff5cc"/>
+                <path d="M-26 0 C-14 -4 0 -6 0 -6 C0 -6 14 -4 26 0" stroke="url(#goldGrad1)" stroke-width="1.8" fill="none"/>
+              </g>
+
+              <!-- Bottom Center Fleur-de-lis Crest -->
+              <g transform="translate(220, 518)">
+                <path d="M0 18 C-5 8 -12 4 -18 0 C-12 -4 -5 -8 0 -18 C5 -8 12 -4 18 0 C12 4 5 8 0 18 Z" fill="url(#goldGrad1)"/>
+                <circle cx="0" cy="0" r="3.2" fill="#fff5cc"/>
+                <path d="M-26 0 C-14 4 0 6 0 6 C0 6 14 4 26 0" stroke="url(#goldGrad1)" stroke-width="1.8" fill="none"/>
+              </g>
+
+              <defs>
+                <linearGradient id="goldGrad1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#fff2cc"/>
+                  <stop offset="45%" stop-color="#e2ba4d"/>
+                  <stop offset="100%" stop-color="#9e6e18"/>
+                </linearGradient>
+                <linearGradient id="goldGrad2" x1="0" y1="1" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#ffe699"/>
+                  <stop offset="50%" stop-color="#f5d680"/>
+                  <stop offset="100%" stop-color="#c89c32"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <!-- Card Content Body -->
+          <div class="card-inner-body">
+            <h1 class="hero-card-title">
+              <span class="title-serif">Sangeet &amp;</span>
+              <span class="title-serif">Cocktails</span>
+            </h1>
+
+            <!-- Elegant Gold Divider with Center Flower Motif -->
+            <div class="hero-card-divider">
+              <span class="divider-line"></span>
+              <span class="divider-motif">❖</span>
+              <span class="divider-line"></span>
+            </div>
+
+            <!-- Couple Names with Sparkles -->
+            <div class="hero-card-couple-wrap">
+              <span class="star-spk star-spk-left">✦</span>
+              <h2 class="hero-card-couple">Nikhil &amp; Sreeja</h2>
+              <span class="star-spk star-spk-right">✦</span>
+            </div>
+
+            <!-- Date & Location -->
+            <p class="hero-card-meta">NOVEMBER 22, 2026 &nbsp;&bull;&nbsp; HYDERABAD</p>
+
+            <!-- Interactive Gold Pill Button with Outer Ring Track -->
+            <div class="hero-card-btn-box">
+              <div class="btn-track-ring"></div>
+              <a href="#celebrate" class="hero-gold-pill-btn" onclick="scrollToCelebrate(event)" aria-label="Enter Celebration">
+                <span class="btn-text">Enter Celebration</span>
+                <span class="btn-arr">&rarr;</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -481,10 +558,10 @@
       </div>
     </section>
 
-    <!-- ================= SECTION 8: OUR FOREVER STARTS HERE (ZERO-GAP HIGH-RES FOOTER) ================= -->
+    <!-- ================= SECTION 8: OUR FOREVER STARTS HERE (HD REFERENCE FOOTER BANNER) ================= -->
     <footer class="section section-forever-footer" id="forever-footer" data-index="7">
       
-      <!-- Ambient Sparkles & Falling Rose Petals -->
+      <!-- Ambient Sparkles -->
       <div class="footer-bg-atmosphere" aria-hidden="true">
         <span class="footer-petal petal-1">🌸</span>
         <span class="footer-petal petal-2">🌸</span>
@@ -493,51 +570,9 @@
         <span class="footer-petal petal-5">🌸</span>
       </div>
 
-      <!-- Sweeping Ribbon Wave Banner Container (Fits Screen with Zero Gaps) -->
-      <div class="footer-wave-stage">
-        <div class="footer-cream-ribbon">
-          
-          <!-- Fine Gold Flourish Accent Lines -->
-          <svg class="ribbon-gold-arcs" viewBox="0 0 1440 400" fill="none" preserveAspectRatio="none">
-            <path d="M-50,220 C180,60 380,180 550,200 C800,230 1100,100 1500,280" stroke="rgba(212,175,55,0.45)" stroke-width="1.8"/>
-            <path d="M-80,260 C150,110 320,230 500,240 C750,260 1050,150 1520,320" stroke="rgba(212,175,55,0.25)" stroke-width="1.2"/>
-          </svg>
-
-          <div class="ribbon-inner-content">
-            <!-- Left: High-Res Dancing Couple in Royal Navy Lehenga & Sherwani -->
-            <div class="footer-couple-figure" data-reveal="fade-right">
-              <img src="assets/images/couple_navy_dancing.png" alt="Sreeja &amp; Nikhil" class="footer-couple-img">
-            </div>
-
-            <!-- Right: Razor-Sharp Vector Typography -->
-            <div class="footer-typography-block" data-reveal="fade-left">
-              <h2 class="footer-script-title">Our forever</h2>
-              <h3 class="footer-serif-headline">STARTS HERE.</h3>
-              
-              <div class="footer-gold-divider-heart">
-                <span class="heart-line"></span>
-                <span class="heart-icon">♡</span>
-                <span class="heart-line"></span>
-              </div>
-
-              <p class="footer-gratitude-text">Thank you for being a part of our beautiful journey.</p>
-
-              <div class="footer-couple-names-wrap">
-                <span class="c-name">SREEJA</span>
-                <span class="c-amp">&amp;</span>
-                <span class="c-name">NIKHIL</span>
-              </div>
-
-              <div class="footer-lotus-ornament">
-                <svg width="40" height="26" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17 2 C15 8 9 13 3 15 C9 17 15 19 17 22 C19 19 25 17 31 15 C25 13 19 8 17 2 Z" stroke="#c59828" stroke-width="1.4"/>
-                  <path d="M17 7 C16 11 12 14 8 16 C12 17 16 18 17 20 C18 18 22 17 26 16 C22 14 18 11 17 7 Z" stroke="#c59828" stroke-width="1.4"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-
-        </div>
+      <!-- Full-Width High-Definition Banner (Exact Match to Reference Graphic) -->
+      <div class="footer-exact-banner-stage" data-reveal="zoom-in">
+        <img src="assets/images/footer_banner_hd.png" alt="Our Forever Starts Here - Sreeja &amp; Nikhil" class="footer-exact-banner-img">
       </div>
 
     </footer>
