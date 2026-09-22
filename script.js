@@ -3,6 +3,41 @@
  * Ambient Particles, Audio Synthesizer, Calendar (.ics / Google), Map Navigation, RSVP & Confetti
  */
 
+/* ==========================================================================
+   [EDITABLE CONFIGURATION] EVENT DETAILS, GOOGLE CALENDAR & MAPS
+   Edit the values below to easily update the event details everywhere!
+   ========================================================================== */
+const EVENT_CONFIG = {
+  // [EDIT: Event Name & Description]
+  eventName: "Sangeet & Cocktails - Nikhil & Sreeja",
+  eventDescription: "Celebrate the Sangeet & Cocktails night with Nikhil & Sreeja! An evening of music, dance, and celebration.",
+  
+  // [EDIT: Date & Time in YYYYMMDDTHHMMSS format]
+  // Example: 20261122T190000 = November 22, 2026 at 7:00 PM (19:00)
+  startDateTime: "20261122T190000",
+  endDateTime: "20261123T010000",
+  
+  // [EDIT: Venue Name, Address & Google Maps Direction Link]
+  venueName: "The Grand Palace Lawns",
+  venueAddress: "The Grand Palace Lawns, Hyderabad, Telangana",
+  googleMapsUrl: "https://maps.google.com/?q=The+Grand+Palace+Lawns+Hyderabad"
+};
+
+/**
+ * Opens Google Calendar with prefilled event details
+ */
+function addToGoogleCalendar() {
+  const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_CONFIG.eventName)}&dates=${EVENT_CONFIG.startDateTime}/${EVENT_CONFIG.endDateTime}&details=${encodeURIComponent(EVENT_CONFIG.eventDescription)}&location=${encodeURIComponent(EVENT_CONFIG.venueAddress)}`;
+  window.open(gcalUrl, '_blank');
+}
+
+/**
+ * Opens Google Maps directions to the venue
+ */
+function openLocationMap() {
+  window.open(EVENT_CONFIG.googleMapsUrl, '_blank');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   initScrollReveal();
