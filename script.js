@@ -18,9 +18,9 @@ const EVENT_CONFIG = {
   endDateTime: "20261123T010000",
   
   // [EDIT: Venue Name, Address & Google Maps Direction Link]
-  venueName: "The Grand Palace Lawns",
-  venueAddress: "The Grand Palace Lawns, Hyderabad, Telangana",
-  googleMapsUrl: "https://maps.google.com/?q=The+Grand+Palace+Lawns+Hyderabad"
+  venueName: "Frisco Hall Event Center",
+  venueAddress: "Frisco Hall Event Center, 5353 Independence Pkwy, Frisco, TX 75035",
+  googleMapsUrl: "https://maps.app.goo.gl/Cj8Fz5GFFRMupB5B7"
 };
 
 /**
