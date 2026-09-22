@@ -212,21 +212,24 @@ body.snap-scroll-body {
   overflow: hidden;
 }
 
-/* Authentic Luxury Hero Card */
+/* Authentic Luxury Hero Card — Fully Opaque */
 .luxury-hero-card {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 480px;
   min-height: 440px;
-  border-radius: 28px;
-  background: linear-gradient(180deg, #0b1128 0%, #111a38 45%, #2d1033 100%);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.88), 0 0 40px rgba(212, 175, 55, 0.16), inset 0 1px 2px rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  /* Fully opaque dark navy → purple gradient — no transparency */
+  background: linear-gradient(170deg, #0b1128 0%, #0e1740 35%, #1a1245 65%, #2d1033 100%);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.92), 0 0 45px rgba(212, 175, 55, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 30px 24px 26px 24px;
   animation: floatCardHero 5s ease-in-out infinite alternate;
+  /* Ensure no transparency bleeds through */
+  isolation: isolate;
 }
 
 @keyframes floatCardHero {
@@ -241,6 +244,7 @@ body.snap-scroll-body {
   border-radius: 36px;
   pointer-events: none;
   animation: auraPulse 4s infinite alternate ease-in-out;
+  z-index: -1;
 }
 
 @keyframes auraPulse {
@@ -370,20 +374,22 @@ body.snap-scroll-body {
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
+/* Button container — holds the oval track ring + pill button */
 .hero-card-btn-box {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;
+  padding: 8px 12px;
 }
 
-.btn-track-pill {
+/* Clean outer oval ring exactly matching the reference */
+.btn-oval-track {
   position: absolute;
-  inset: -3px -14px;
+  inset: 0;
   border-radius: 999px;
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+  border: 1.5px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.18), inset 0 0 8px rgba(212, 175, 55, 0.06);
   pointer-events: none;
 }
 
