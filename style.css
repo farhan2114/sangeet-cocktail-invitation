@@ -1602,21 +1602,26 @@ body.snap-scroll-body {
 }
 
 /* ==========================================================================
-   SECTION 8: OUR FOREVER STARTS HERE (FULL-SCREEN HD BANNER — ZERO GAPS)
-   Image fills entire viewport via object-fit: cover, left-anchored
+   SECTION 8: OUR FOREVER STARTS HERE (FULL BANNER — NO CLIPPING, HD)
+   Section height is locked to the image aspect ratio (1024:396 = 2.586:1)
+   so the banner always displays 100% without cropping any side.
+   Dark navy background matches the image edges — zero visible letterboxing.
    ========================================================================== */
 .section-forever-footer {
-  background: #0d1733;
+  background: #131e36;
   padding: 0;
   margin: 0;
   width: 100vw;
-  height: 100vh;
-  min-height: 100vh;
+  /* height derived from image aspect ratio: h = 100vw / 2.586 */
+  height: clamp(260px, calc(100vw / 2.586), 100vh);
+  min-height: 260px;
+  max-height: 100vh;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
   position: relative;
   overflow: hidden;
+  scroll-snap-align: start;
 }
 
 .footer-bg-atmosphere {
@@ -1645,7 +1650,7 @@ body.snap-scroll-body {
   100% { transform: translateY(-16px) rotate(20deg); opacity: 0.95; }
 }
 
-/* Full-screen wrapper — stretches to fill entire footer section */
+/* Full-screen wrapper */
 .footer-banner-wrapper {
   position: absolute;
   inset: 0;
@@ -1655,18 +1660,22 @@ body.snap-scroll-body {
   overflow: hidden;
 }
 
-/* Banner image — covers the full viewport, anchored left, zero quality loss */
+/* 
+  object-fit: contain — shows the ENTIRE image without clipping any side.
+  The navy background (#131e36) matches the banner's dark navy edges,
+  so any thin letterbox bars blend in invisibly.
+*/
 .footer-banner-exact-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: left center;
+  object-fit: contain;
+  object-position: center center;
   display: block;
   transition: transform 0.5s ease;
 }
 
 .footer-banner-wrapper:hover .footer-banner-exact-img {
-  transform: scale(1.008);
+  transform: scale(1.012);
 }
 
 
@@ -2089,27 +2098,24 @@ body.snap-scroll-body {
     margin-top: 6px !important;
   }
 
-  /* 9. Section 8: Forever Footer Mobile Exact Banner Graphic */
+  /* 9. Section 8: Forever Footer Mobile — Full Banner No Clip */
   .section-forever-footer {
-    height: 100vh !important;
-    min-height: 100vh !important;
+    width: 100vw !important;
+    height: calc(100vw / 2.586) !important;
+    min-height: 180px !important;
+    max-height: 60vh !important;
     padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
   }
   .footer-banner-wrapper {
-    width: 100vw !important;
-    height: 100vh !important;
+    width: 100% !important;
+    height: 100% !important;
     padding: 0 !important;
   }
   .footer-banner-exact-img {
-    width: 100vw !important;
-    height: 100vh !important;
-    max-width: 100vw !important;
-    max-height: 100vh !important;
-    object-fit: cover !important;
-    object-position: left center !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
   }
 
   /* Floating Audio Button */
