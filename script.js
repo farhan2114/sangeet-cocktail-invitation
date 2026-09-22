@@ -23,7 +23,7 @@ const SUPABASE_CONFIG = {
 
 const GOOGLE_SHEETS_CONFIG = {
   // Google Apps Script Web App URL (starts with "https://script.google.com/macros/s/.../exec")
-  webhookUrl: ""
+  webhookUrl: "https://script.google.com/macros/s/AKfycbxRF51hY_p4I2CnwZRz0U-SH2vrAxxGDUpUGgNlZIaqjDKJdPAnmihVOQYH7-yvw7PkGg/exec"
 };
 
 const EVENT_CONFIG = {
